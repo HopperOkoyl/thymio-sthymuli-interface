@@ -27,8 +27,9 @@ import TheWelcome from './components/TheWelcome.vue' */
     },
     data() {
       return {
-        MenuNames: MenuNames,
-        CurrentMenu: MenuNames.Home
+        menuNames: MenuNames,
+        currentMenu: MenuNames.Home,
+        previousMenu: MenuNames.Home
       }
     }
   }
@@ -36,12 +37,13 @@ import TheWelcome from './components/TheWelcome.vue' */
 
 <template>
   <header>
-    <div class=MainMenu>
-      <ul class="nav"><li v-for="name in MenuNames"><MainMenuButton @buttonClicked="CurrentMenu = name" :name="name"/></li></ul>
+    <MainMenuButton v-if="currentMenu !== menuNames.Home" @buttonClicked="currentMenu = previousMenu" :name="'Back'"></MainMenuButton>
+    <div v-if="currentMenu === menuNames.Home" class=MainMenu>
+      <ul class="nav"><li v-for="name in menuNames"><MainMenuButton @buttonClicked="previousMenu = currentMenu; currentMenu = name" :name="name"/></li></ul>
     </div>
   </header>
   <main>
-    <component :is="CurrentMenu"/>
+    <component :is="currentMenu"/>
 <!--     <InterfaceActivity/>
     <TeacherClassSelection/> -->
   </main>
