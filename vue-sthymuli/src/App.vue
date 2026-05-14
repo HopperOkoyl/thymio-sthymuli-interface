@@ -1,7 +1,7 @@
 <script lang="ts">
 /* import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue' */
-  import MainMenuButton from './components/MainMenuButton.vue';
+  // import MainMenuButton from './components/Button.vue';
   import InterfaceActivity from './components/3dInterfaceActivity.vue';
   import TeacherClassSelection from './components/TeacherClassSelection.vue';
   import Home from './components/Home.vue';
@@ -17,7 +17,7 @@ import TheWelcome from './components/TheWelcome.vue' */
 
   export default {
     components: {
-      MainMenuButton,
+      // MainMenuButton,
       InterfaceActivity,
       TeacherClassSelection,
       Home,
@@ -27,9 +27,30 @@ import TheWelcome from './components/TheWelcome.vue' */
     },
     data() {
       return {
-        menuNames: MenuNames,
-        currentMenu: MenuNames.Home,
-        previousMenu: MenuNames.Home
+        // menuNames: Object.values(MenuNames),
+        MenuNames,
+        // MenuNames: [
+        //   {pageName: "Home", value: 0 },
+        //   {pageName: "Teacher", value: 1 },
+        //   {pageName: "Challenges", value: 2 },
+        //   {pageName: "Sandbox", value: 3 }
+        // ],
+        currentMenu: MenuNames.Home,//"Home",//MenuNames.Home,
+        previousMenu: MenuNames.Home//"Home"//MenuNames.Home
+      }
+    },
+    //TODO: Adding router for navigation
+    // methods: {
+    //   goBack() {
+    //     this.$router.back();
+    //   }
+    // },
+    computed: {
+      allMenus() {
+        return Object.values(MenuNames)
+      },
+      secondaryMenus() {
+        return this.allMenus.filter(m => m !== MenuNames.Home)
       }
     }
   }
@@ -37,13 +58,13 @@ import TheWelcome from './components/TheWelcome.vue' */
 
 <template>
   <header>
-    <MainMenuButton v-if="currentMenu !== menuNames.Home" @buttonClicked="currentMenu = previousMenu" :name="'Back'"></MainMenuButton>
-    <div v-if="currentMenu === menuNames.Home" class=MainMenu>
-      <ul class="nav"><li v-for="name in menuNames"><MainMenuButton @buttonClicked="previousMenu = currentMenu; currentMenu = name" :name="name"/></li></ul>
+    <button v-if="currentMenu !== MenuNames.Home" @click="currentMenu = previousMenu">Back</button>
+    <div v-if="currentMenu === MenuNames.Home" class=MainMenu>
+      <ul class="nav"><li v-for="name in secondaryMenus"><button @click="previousMenu = currentMenu; currentMenu = name">{{ name }}</button></li></ul>
     </div>
   </header>
   <main>
-    <component :is="currentMenu"/>
+    <component v-if="currentMenu !== MenuNames.Home" :is="currentMenu"/>
 <!--     <InterfaceActivity/>
     <TeacherClassSelection/> -->
   </main>
