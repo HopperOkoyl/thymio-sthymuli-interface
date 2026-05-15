@@ -8,6 +8,7 @@ import TheWelcome from './components/TheWelcome.vue' */
   import Teacher from './components/Teacher.vue';
   import Challenges from './components/Challenges.vue';
   import Sandbox from './components/Sandbox.vue';
+  import ThymioConnection from './components/ThymioConnection.vue';
   enum MenuNames {
     Home = 'Home',
     Teacher = 'Teacher',
@@ -23,7 +24,8 @@ import TheWelcome from './components/TheWelcome.vue' */
       Home,
       Teacher,
       Challenges,
-      Sandbox
+      Sandbox,
+      ThymioConnection
     },
     data() {
       return {
@@ -58,6 +60,7 @@ import TheWelcome from './components/TheWelcome.vue' */
 
 <template>
   <header>
+    <ThymioConnection></ThymioConnection>
     <button v-if="currentMenu !== MenuNames.Home" @click="currentMenu = previousMenu">Back</button>
     <div v-if="currentMenu === MenuNames.Home" class=MainMenu>
       <ul class="nav"><li v-for="name in secondaryMenus"><button @click="previousMenu = currentMenu; currentMenu = name">{{ name }}</button></li></ul>
