@@ -1,5 +1,6 @@
 <script lang="ts">
     import check from '../assets/check.svg'
+    import cross from '../assets/cross.svg'
     import { defineComponent } from 'vue'
     import * as Thymio from '../../../../../thymio3-ts-api/dist/thymio.mjs'
     // export default {
@@ -37,6 +38,7 @@
             return {
                 thymio: Thymio,
                 check,
+                cross,
                 connected: false
             }
         },
@@ -73,7 +75,7 @@
 </script>
 
 <template>
-    <button @click="showConnectionWindow();connect()" class="connectivityStatus"><p><img :src="check" alt="Check icon"> Thymio {{connected ? "connected" : "disconnected"}}</p></button>
+    <button @click="showConnectionWindow();connect()" class="connectivityStatus"><p><img :src="connected ? check : cross" alt="Check icon"> Thymio {{connected ? "connected" : "disconnected"}}</p></button>
     <div>
         <h1>Thymio 3 Test</h1>
         <div v-if="connected">
