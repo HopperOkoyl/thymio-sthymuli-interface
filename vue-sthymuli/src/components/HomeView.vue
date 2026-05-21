@@ -27,9 +27,19 @@
         <h1>Home</h1>
         <nav>
         <!-- <RouterLink to="/">Home</RouterLink> -->
-            <div v-for="name in secondaryMenus" :key="name">
-                <RouterLink :to=name.toLowerCase()>{{ name }}</RouterLink>
-            </div>
+            <ul class="nav-menu">
+                <li v-for="name in secondaryMenus" :key="name">
+                    <RouterLink :to=name.toLowerCase()>{{ name }}</RouterLink>
+                </li>
+            </ul>
         </nav>
     </div>
 </template>
+
+<style scoped>
+    .nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    }
+</style>

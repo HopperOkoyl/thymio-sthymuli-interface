@@ -40,7 +40,8 @@
 <template>
   <div>
     <p>{{ currentPage }}</p>
-    <div v-if="currentPage === 'topic choice'" class="container">
+    <!-- <div v-if="currentPage === 'topic choice'" class="container"> -->
+    <div class="container">
       <ul class="allTopics">
         <li v-for="classTopic in classes" :key="classTopic.topic">
           <RouterLink :to="{ name: 'TeacherClass', params: { topicId: classTopic.topic } }" class="allTopics" :class="'classTopic-' + classTopic.value"> {{ classTopic.topic }} </RouterLink>
