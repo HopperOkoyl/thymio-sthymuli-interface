@@ -17,9 +17,9 @@
       // forwardClick() {
       //   this.$emit('buttonClicked')
       // },
-      // showActivities(topic: string) {
-      //   this.currentPage = topic
-      // }
+      showActivities(topic: string) {
+        this.currentPage = topic
+      }
       //in @buttonClicked: currentPage = classTopic.topic"
     },
     data() {
@@ -38,14 +38,18 @@
 </script>
 
 <template>
-  <p>{{ currentPage }}</p>
-  <div v-if="currentPage === 'topic choice'" class="container">
-    <div v-for="classTopic in classes">
-      <button @click="currentPage = classTopic.topic" :class="'classTopic-' + classTopic.value">{{classTopic.topic}}</button>
-      <!-- <Button @buttonClicked="currentPage = classTopic.topic" :class="'classTopic-' + classTopic.value" :name="classTopic.topic"></Button> -->
+  <div>
+    <p>{{ currentPage }}</p>
+    <div v-if="currentPage === 'topic choice'" class="container">
+      <ul class="allTopics">
+        <li v-for="classTopic in classes" :key="classTopic.topic">
+          <RouterLink :to="{ name: 'TeacherClass', params: { topicId: classTopic.topic } }" class="allTopics" :class="'classTopic-' + classTopic.value"> {{ classTopic.topic }} </RouterLink>
+          <!-- <button @click="currentPage = classTopic.topic" :class="'classTopic-' + classTopic.value">{{classTopic.topic}}</button> -->
+        </li>
+      </ul>
     </div>
+    <div v-if="currentPage === 'Computer Science'"><p>CS chosen</p></div>
   </div>
-  <div v-if="currentPage === 'Computer Science'"><p>CS chosen</p></div>
 </template>
 
 
@@ -57,11 +61,25 @@
     pointer-events: auto;
     /* background-color: black; */ /* TODO: check what is the ~padding on the left*/
   }
-  Button {
+  a.allTopics { /*RouterLink is rendered as a (link), it's not a valid html element!*/
     width: 30vh;
     height: 30vh;
     border-radius: 50%;
     position: absolute;
+    display: flex; /* or block, or inline-block */
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: inherit;
+  }
+  a.allTopics:visited {
+    color: inherit;
+  }
+  ul.allTopics {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   }
   .classTopic-0 {
     top: 10vh;
