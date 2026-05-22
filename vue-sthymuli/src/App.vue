@@ -9,6 +9,7 @@ import TheWelcome from './components/TheWelcome.vue' */
   import Challenges from './components/Challenges.vue';
   import Sandbox from './components/Sandbox.vue';
   import ThymioConnection from './components/ThymioConnection.vue';
+  import ConnectionStatus from './components/ConnectionStatus.vue';
   // enum MenuNames {
   //   Home = 'Home',
   //   Teacher = 'Teacher',
@@ -24,10 +25,12 @@ import TheWelcome from './components/TheWelcome.vue' */
       Teacher,
       Challenges,
       Sandbox,
-      ThymioConnection
+      ThymioConnection,
+      ConnectionStatus
     },
     data() {
       return {
+        show: false
         // menuNames: Object.values(MenuNames),
         // MenuNames,
         // MenuNames: [
@@ -41,7 +44,11 @@ import TheWelcome from './components/TheWelcome.vue' */
       }
     },
     //TODO: Adding router for navigation
-    // methods: {
+    methods: {
+      toggleConnectionWindow() {
+        console.log("show connection window (to be implemented)")
+        this.show = !this.show
+      }
     //   goBack() {
     //     this.$router.back();
     //   }
@@ -53,12 +60,14 @@ import TheWelcome from './components/TheWelcome.vue' */
     //   secondaryMenus() {
     //     return this.allMenus.filter(m => m !== MenuNames.Home)
     //   }
-    // }
+    }
   }
 </script>
 
 <template>
   <div>
+    <ConnectionStatus @showConnectionWindow="toggleConnectionWindow()"></ConnectionStatus>
+    <ThymioConnection v-if="show"></ThymioConnection>
     <p><strong>Current route path:</strong> {{ $route.fullPath }}</p>
     <main>
       <button v-if="$route.name !== 'Home'" @click="$router.back()">Back</button>
