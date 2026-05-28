@@ -1,22 +1,28 @@
 <script lang="ts">
-    enum MenuNames {
-        Home = 'Home',
-        Teacher = 'Teacher',
-        Challenges = 'Challenges',
-        Sandbox = 'Sandbox',
-    }
+    // enum MenuNames {
+    //     Home = 'Home',
+    //     Teacher = 'Teacher',
+    //     Challenges = 'Challenges',
+    //     Sandbox = 'Sandbox',
+    // }
     export default{
         data() {
             return {
-                MenuNames
+                // MenuNames
+                MenuNames: [
+                    { name: "Home", value: 0 },
+                    { name: "Teacher", value: 1 },
+                    { name: "Challenges", value: 2 },
+                    { name: "Sandbox", value: 3 }
+                ],
             }
         },
         computed: {
-            allMenus() {
-                return Object.values(MenuNames)
-            },
+            // allMenus() {
+            //     return Object.values(MenuNames)
+            // },
             secondaryMenus() {
-                    return this.allMenus.filter(m => m !== MenuNames.Home)
+                    return this.MenuNames.filter(m => m.name !== "Home")
             }
         }
     }
@@ -28,8 +34,8 @@
         <nav>
         <!-- <RouterLink to="/">Home</RouterLink> -->
             <ul class="nav-menu">
-                <li v-for="name in secondaryMenus" :key="name">
-                    <RouterLink :to=name.toLowerCase()>{{ name }}</RouterLink>
+                <li v-for="menu in secondaryMenus" :key="menu.name">
+                    <RouterLink :to=menu.name.toLowerCase()>{{ menu.name }}</RouterLink>
                 </li>
             </ul>
         </nav>
@@ -57,6 +63,7 @@
         display: flex;
         flex-direction: column;
     }
+
     /* .nav {
         list-style-type: none;
         padding: 0px;
