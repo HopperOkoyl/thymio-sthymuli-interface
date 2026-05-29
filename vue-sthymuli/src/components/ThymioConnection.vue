@@ -76,7 +76,7 @@ while 1:
 
 <template>
     <!-- <button @click="showConnectionWindow()" class="connectivityStatus"><p><img :src="connected ? check : cross" alt="Check icon"> Thymio {{connected ? "connected" : "disconnected"}}</p></button> -->
-    <div>
+    <div class="popup">
         <h1>Thymio 3 Test</h1>
         <div v-if="connected">
             <textarea v-model="code">
@@ -90,15 +90,3 @@ while 1:
         </div>
     </div>
 </template>
-
-<!-- <style scoped>
-    img {
-        height: 1em;
-        width: auto;
-        vertical-align: middle;
-    }
-    .connectivityStatus {
-        background-color: white;
-        border:0;
-    }
-</style> -->

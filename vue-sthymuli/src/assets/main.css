@@ -1,50 +1,54 @@
 @import './base.css';
 
 #app {
-  max-width: 1280px;
-  margin: 0 0;
+  /*TODO: why is app not taking all the space in body?*/
+  /* max-width: 1280px;
+  margin: 0 0; */
   /* padding: 2rem; */
-  font-weight: normal;
+  /* font-weight: normal; */
   /*centered menu:*/
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  background-color: #FCFCFC;
+  color: #222222;
 }
 
-.MainMenu {
+/* .MainMenu {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100vw;
   flex: 1;
-}
+} */
 
-a,
+/* a,
 .green {
   text-decoration: none;
   color: hsla(160, 100%, 37%, 1);
   transition: 0.4s;
   padding: 3px;
-}
+} */
 
-@media (hover: hover) {
+/* @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
   }
-}
+} */
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   body {
-    display: flex;
-    /* place-items: center; */
-  }
+    display: flex; */
+/* place-items: center; */
+/* } */
 
-  #app {
+/* #app {
     display: grid;
-    grid-template-columns: 1fr; /*1fr;*/
+    grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     padding: 0 0rem;
-  }
-}
+  } */
+/* } */

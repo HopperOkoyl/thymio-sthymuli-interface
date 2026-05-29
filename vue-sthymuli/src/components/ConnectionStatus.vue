@@ -38,7 +38,8 @@
         vertical-align: middle;
     }
     .connectivityStatus {
-        background-color: white;
+        background-color: inherit;/*white; */
         border:0;
+        text-align: left;
     }
 </style>

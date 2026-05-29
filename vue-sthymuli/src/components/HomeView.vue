@@ -29,17 +29,16 @@
 </script>
 
 <template>
-    <div>
-        <!-- <h1>Home</h1> -->
-        <nav>
-        <!-- <RouterLink to="/">Home</RouterLink> -->
-            <ul class="nav-menu">
-                <li v-for="menu in secondaryMenus" :key="menu.name">
-                    <RouterLink :to=menu.name.toLowerCase()>{{ menu.name }}</RouterLink>
-                </li>
-            </ul>
-        </nav>
-    </div>
+    <nav>
+        <ul class="nav-menu">
+            <li v-for="menu in secondaryMenus" :key="menu.name" :class="menu.name">
+                <RouterLink :to=menu.name.toLowerCase() class="router-link">
+                    <p class="place-holder-images">PlaceHolder image</p>
+                    {{ menu.name }}
+                </RouterLink>
+            </li>
+        </ul>
+    </nav>
 </template>
 
 <style scoped>
@@ -51,18 +50,54 @@
         text-align: center;
 
 
-        height: 100vh;
-        width: 100vw;
+        height: 100%;
+        width: 100%;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
+        /* background-color: aqua; */
     }
     nav {
-        height: 100vh;
-        width: 100vw;
+        height: 100%;
+        width: 100%;
+        /* display: flex;
+        flex-direction: column; */
+    }
+
+    .place-holder-images {
+        background-color: lightgray;
+        /* padding: 30% 10% 30% 10%; */
+        padding: 120px 20px 120px 20px;
+    }
+    /* Menu style */
+    .Teacher, .Challenges, .Sandbox {
+        /* outline: 2px solid black; */
         display: flex;
         flex-direction: column;
+        border-radius: 10vmin / 10vmin;
+        justify-content: space-around;
+        height: 90%;
     }
+    .Teacher {
+        background-color: red; 
+        /* flex: 1; */ /*not compatible with space-between*/
+        width: 20%;
+    }
+    .Challenges {
+        background-color: blue;
+        /* flex: 2 2 0; */ /*not compatible with space-between*/
+        width: 30%;
+    }
+    .Sandbox {
+        background-color: green;
+        /* flex : 1; */ /*not compatible with space-between*/
+        width: 20%;
+    }
+    .router-link {
+        margin: 30% 10% 30% 10%;
+    }
+    
+
 
     /* .nav {
         list-style-type: none;

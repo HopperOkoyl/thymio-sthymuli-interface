@@ -30,17 +30,10 @@ import TheWelcome from './components/TheWelcome.vue' */
     },
     data() {
       return {
-        show: false
-        // menuNames: Object.values(MenuNames),
-        // MenuNames,
-        // MenuNames: [
-        //   {pageName: "Home", value: 0 },
-        //   {pageName: "Teacher", value: 1 },
-        //   {pageName: "Challenges", value: 2 },
-        //   {pageName: "Sandbox", value: 3 }
-        // ],
-        // currentMenu: MenuNames.Home,//"Home",//MenuNames.Home,
-        // previousMenu: MenuNames.Home//"Home"//MenuNames.Home
+        show: false,
+
+        // Popup
+        visible: false,
       }
     },
     //TODO: Adding router for navigation
@@ -48,28 +41,38 @@ import TheWelcome from './components/TheWelcome.vue' */
       toggleConnectionWindow() {
         console.log("show connection window (to be implemented)")
         this.show = !this.show
-      }
-    //   goBack() {
-    //     this.$router.back();
-    //   }
-    // },
-    // computed: {
-    //   allMenus() {
-    //     return Object.values(MenuNames)
+      },
+
+      // Popup
+      // toggleModal() {
+      //   this.visible = !this.visible;
+      // },
+    },
+
+    // Popup
+    // props: {
+    //   classes: {
+    //     type: String,
+    //     default: "",
     //   },
-    //   secondaryMenus() {
-    //     return this.allMenus.filter(m => m !== MenuNames.Home)
-    //   }
-    }
+    // },
   }
 </script>
 
 <template>
-  <div>
+  <div class="screen">
     <ConnectionStatus @showConnectionWindow="toggleConnectionWindow()"></ConnectionStatus>
-    <ThymioConnection v-if="show"></ThymioConnection>
+    <!-- <button @click="toggleModal()">{{visible ? "hide" : "show"}} popup</button> -->
     <p><strong>Current route path:</strong> {{ $route.fullPath }}</p>
     <main>
+      <dialog
+        :open="show"
+      >
+        <button class="closeButton" @click="toggleConnectionWindow()">close</button>
+        <p>Test</p>
+        <!-- <ThymioConnection v-if="show"></ThymioConnection> -->
+        <ThymioConnection></ThymioConnection>
+      </dialog>
       <button v-if="$route.name !== 'Home'" @click="$router.back()">Back</button>
       <RouterView />
     </main>
@@ -100,4 +103,29 @@ import TheWelcome from './components/TheWelcome.vue' */
 </template> -->
 
 <style>
+.screen, main, dialog {
+  background-color: inherit;
+  color: inherit;
+}
+.screen {
+  /* flex: 1; */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+dialog {
+  border-style:solid;
+  border-width: 1px;
+  border-radius: 15%;
+  box-shadow: none;
+  align-items: center;
+  /* width: 0.9vw;
+  height: 0.9vh; */
+}
+main {
+  height: 100%;
+}
+
+/* .closeButton {
+} */
 </style>
