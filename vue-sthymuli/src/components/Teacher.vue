@@ -38,7 +38,7 @@
 </script>
 
 <template>
-  <div>
+  <div class="external-container">
     <p>{{ currentPage }}</p>
     <!-- <div v-if="currentPage === 'topic choice'" class="container"> -->
     <div class="container">
@@ -55,16 +55,20 @@
 
 
 <style scoped>
+  .external-container {
+    height: 100%;
+    width: 100%;
+  }
   .container {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     position: relative;
     pointer-events: auto;
     /* background-color: black; */ /* TODO: check what is the ~padding on the left*/
   }
   a.allTopics { /*RouterLink is rendered as a (link), it's not a valid html element!*/
-    width: 30vh;
-    height: 30vh;
+    width: 30%;
+    height: 30%;
     border-radius: 50%;
     position: absolute;
     display: flex; /* or block, or inline-block */
@@ -83,28 +87,28 @@
   margin: 0;
   }
   .classTopic-0 {
-    top: 10vh;
-    left: 10vw;
+    top: 10%;
+    left: 10%;
     background-color: lightblue;
   }
   .classTopic-1 {
-    top: 50vh;
-    left: 20vw;
+    top: 50%;
+    left: 20%;
     background-color: beige;
   }
   .classTopic-2 {
-    top: 20vh;
-    left: 35vw;
+    top: 20%;
+    left: 35%;
     background-color: aquamarine;
   }
   .classTopic-3 {
-    top: 45vh;
-    left: 75vw;
+    top: 45%;
+    left: 75%;
     background-color: lightcoral;
   }
   .classTopic-4 {
-    top: 10vh;
-    left: 55vw;
+    top: 10%;
+    left: 55%;
     background-color: lightslategray;
   }
 </style>

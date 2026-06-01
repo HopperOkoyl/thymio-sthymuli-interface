@@ -30,50 +30,40 @@ import TheWelcome from './components/TheWelcome.vue' */
     },
     data() {
       return {
-        show: false,
-
         // Popup
-        visible: false,
+        show: false,
+        isConnected: false,
       }
     },
     //TODO: Adding router for navigation
     methods: {
       toggleConnectionWindow() {
-        console.log("show connection window (to be implemented)")
+        console.log("Toggling connection window")
         this.show = !this.show
+        if (!this.show) {
+          console.log("Popup was closed, if popup was waiting for connection ('loading' state), should go back to 'disconnected' state")
+        }
       },
-
-      // Popup
-      // toggleModal() {
-      //   this.visible = !this.visible;
-      // },
     },
-
-    // Popup
-    // props: {
-    //   classes: {
-    //     type: String,
-    //     default: "",
-    //   },
-    // },
   }
 </script>
 
 <template>
   <div class="screen">
-    <ConnectionStatus @showConnectionWindow="toggleConnectionWindow()"></ConnectionStatus>
-    <!-- <button @click="toggleModal()">{{visible ? "hide" : "show"}} popup</button> -->
-    <p><strong>Current route path:</strong> {{ $route.fullPath }}</p>
+    <ConnectionStatus id="connection-status" @toggleConnectionWindow="toggleConnectionWindow()" :connectionStatus="isConnected"></ConnectionStatus>
     <main>
-      <dialog
+      <dialog id="connection-popup"
         :open="show"
       >
-        <button class="closeButton" @click="toggleConnectionWindow()">close</button>
-        <p>Test</p>
+        <div class="popup-topbar"><button class="closeButton" @click="toggleConnectionWindow()">&#x2715;</button></div>
         <!-- <ThymioConnection v-if="show"></ThymioConnection> -->
-        <ThymioConnection></ThymioConnection>
+        <ThymioConnection :popupState="show" @isThymioConnected="(newStatus) => isConnected = newStatus"></ThymioConnection>
       </dialog>
-      <button v-if="$route.name !== 'Home'" @click="$router.back()">Back</button>
+      <p><strong>Current route path:</strong> {{ $route.fullPath }}</p>
+      <div v-if="show" @click="toggleConnectionWindow();console.log('Connection window closed by clicking on blur.')" class="blur"></div>
+      <div>
+        <button id="back-button" v-if="$route.name !== 'Home'" @click="$router.back()">Back</button>
+      </div>
       <RouterView />
     </main>
   </div>
@@ -108,24 +98,53 @@ import TheWelcome from './components/TheWelcome.vue' */
   color: inherit;
 }
 .screen {
-  /* flex: 1; */
   display: flex;
   flex-direction: column;
   height: 100%;
 }
-dialog {
+#connection-popup {
+  z-index: 2;
   border-style:solid;
   border-width: 1px;
-  border-radius: 15%;
+  border-radius: 4% / 5%;
   box-shadow: none;
   align-items: center;
-  /* width: 0.9vw;
-  height: 0.9vh; */
+  text-align: center;
+  width: 40%;
+  height: 60%;
+}
+.blur {
+  position: fixed;
+  top:0;
+  left:0;
+  height: 100vh;
+  width:100vw;
+  z-index: 1;
+  backdrop-filter: blur(3px);
+  background-color: rgba(255, 255, 255, 0.65);
 }
 main {
   height: 100%;
+  flex: 19 19 19;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#connection-status {
+  flex: 1 1 1;
 }
 
-/* .closeButton {
+.popup-topbar {
+  text-align: right;
+}
+.closeButton {
+  border-style: none;
+}
+
+.closeButton:not(:hover) {
+  background-color: inherit;
+}
+
+/* #back-button {
 } */
 </style>

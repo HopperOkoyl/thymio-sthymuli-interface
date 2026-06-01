@@ -26,7 +26,21 @@
 </script>
 
 <template>
-  <div v-for="room in challengesRooms">
-    <button>{{ room.name }}</button>
+  <div class="external-container">
+    <div class="room" v-for="room in challengesRooms">
+      <button>{{ room.name }}</button>
+    </div>
   </div>
 </template>
+
+<style scoped>
+  .external-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+  }
+  .room {
+    height: 100%;
+    width: 100%;
+  }
+</style>

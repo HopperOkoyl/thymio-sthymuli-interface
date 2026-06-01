@@ -3,13 +3,26 @@
     import cross from '../assets/cross.svg'
     import { defineComponent } from 'vue'
     import * as Thymio from '../../../../../thymio3-ts-api/dist/thymio.mjs'
+    import {ref, watch} from 'vue'
 
     //Put in dependencies in package.json:
     //     "thymio3-ts-api": "file:../../../thymio3-ts-api"
     export default defineComponent({
-        name: 'ThymioComponent',
+        // name: 'ThymioComponent',
+        props: {
+            popupState: Boolean,
+        },
+        watch: {
+            popupState(newState) {
+                console.log(`New popup state received in child: ${newState}`)
+                if (!newState && this.loading) { //Popup was closed while waiting for connection
+                    this.loading = false
+                }
+            }
+        },
         emits: [
-            'connectionWindow'
+            'connectionWindow',
+            'isThymioConnected',
         ],
         data() {
             return {
@@ -17,6 +30,7 @@
                 check,
                 cross,
                 connected: false,
+                loading: false,
                 code: `
 import thymio
 import time
@@ -39,24 +53,29 @@ while 1:
                 this.thymio = (window as any).thymio
             }
             document.head.appendChild(script)
-            // document.addEventListener("thymio-connected", (event) => {
-            //         const customEvent = event as CustomEvent
-            //         this.connected = customEvent.detail as boolean //may be true (connection) or false (disconnection)
-            //         console.log(`thymio ${customEvent.detail ? "connected successfully" : "disconnected successfully"}`)
-            //     })
+            document.addEventListener("thymio-connected", (event) => {
+                    const customEvent = event as CustomEvent
+                    this.connected = customEvent.detail as boolean //may be true (connection) or false (disconnection)
+                    console.log(`thymio ${this.connected ? "connected successfully" : "disconnected successfully"}`)
+                    this.$emit('isThymioConnected', this.connected)
+                    this.loading = false //not loading anymore if clicked "connect" and it worked or clicked "disconnect" (and it worked)
+                    console.log(`isConnected property of thymio: ${this.thymio.isConnected()}`)
+            })
         },
         methods: {
             connect() {
                 if (this.thymio) {
+                    this.loading = true
                     this.thymio.requestAndConnect()
-                    console.log("Connected")
-                    console.log(this.thymio.isConnected())
+                    console.log("Connection request sent")
                 }
             },
             disconnect() {
                 if (this.thymio) {
+                    this.loading = false
+                    this.connected = false
                     this.thymio.disconnect()
-                    console.log("Disconnected")
+                    console.log("Disconnection request sent")
                 }
             },
             async executeClick() {
@@ -74,19 +93,49 @@ while 1:
     })
 </script>
 
+
+
 <template>
     <!-- <button @click="showConnectionWindow()" class="connectivityStatus"><p><img :src="connected ? check : cross" alt="Check icon"> Thymio {{connected ? "connected" : "disconnected"}}</p></button> -->
     <div class="popup">
-        <h1>Thymio 3 Test</h1>
-        <div v-if="connected">
+        <h1>Connection to Thymio</h1>
+        <div>
+            <button @click="connected ? disconnect() : connect()"> {{connected ? 'Disconnect' : 'Connect'}}</button>
+            <!-- <button @click="disconnect();">Disconnect</button> -->
+        </div>
+        <div class="connected" v-if="connected">
             <textarea v-model="code">
             </textarea>
-            <button @click="executeClick()">Execute code</button>
-            <button @click="stopClick()">Stop code execution</button>
+            <div>
+                <button @click="executeClick()">Execute code</button>
+                <button @click="stopClick()">Stop code execution</button>
+            </div>
         </div>
-        <div>
-            <button @click="connect();">Connect</button>
-            <button @click="disconnect();">Disconnect</button>
+        <div class="loading" v-else-if="loading">
+            <p>Waiting for connection...</p>
         </div>
     </div>
 </template>
+
+<style scoped>
+    .popup {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .connected, .loading {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+    }
+
+    textarea {
+        field-sizing: content;
+        max-width: 95%;
+        min-width: 10%;
+        min-height: 20%;
+}
+</style>
