@@ -8,7 +8,6 @@
     //Put in dependencies in package.json:
     //     "thymio3-ts-api": "file:../../../thymio3-ts-api"
     export default defineComponent({
-        // name: 'ThymioComponent',
         props: {
             popupState: Boolean,
         },
@@ -54,12 +53,15 @@ while 1:
             }
             document.head.appendChild(script)
             document.addEventListener("thymio-connected", (event) => {
-                    const customEvent = event as CustomEvent
-                    this.connected = customEvent.detail as boolean //may be true (connection) or false (disconnection)
-                    console.log(`thymio ${this.connected ? "connected successfully" : "disconnected successfully"}`)
-                    this.$emit('isThymioConnected', this.connected)
-                    this.loading = false //not loading anymore if clicked "connect" and it worked or clicked "disconnect" (and it worked)
-                    console.log(`isConnected property of thymio: ${this.thymio.isConnected()}`)
+                const customEvent = event as CustomEvent
+                this.connected = customEvent.detail as boolean //may be true (connection) or false (disconnection)
+                console.log(`thymio ${this.connected ? "connected successfully" : "disconnected successfully"}`)
+                this.$emit('isThymioConnected', this.connected)
+                this.loading = false //not loading anymore if clicked "connect" and it worked or clicked "disconnect" (and it worked)
+                console.log(`isConnected property of thymio: ${this.thymio.isConnected()}`)
+                // TODO: Error to catch from browser: thymio.ts:67 Uncaught (in promise) NotFoundError: User cancelled the requestDevice() chooser.
+                // TODO: Error to catch from browser: Uncaught (in promise) Error: Web Bluetooth not supported
+                    //TODO: if browser is firefox: suggest to use chrome/safari/... if also OS is linux based => suggest to use Chrome with the correct experimental setting set
             })
         },
         methods: {
@@ -85,10 +87,6 @@ while 1:
             async stopClick() {
                 await this.thymio.stopScriptExecution();
             },
-            // showConnectionWindow() {
-            //     this.$emit('connectionWindow')
-            //     console.log("show connection window")
-            // }
         }
     })
 </script>
@@ -96,12 +94,10 @@ while 1:
 
 
 <template>
-    <!-- <button @click="showConnectionWindow()" class="connectivityStatus"><p><img :src="connected ? check : cross" alt="Check icon"> Thymio {{connected ? "connected" : "disconnected"}}</p></button> -->
     <div class="popup">
         <h1>Connection to Thymio</h1>
         <div>
             <button @click="connected ? disconnect() : connect()"> {{connected ? 'Disconnect' : 'Connect'}}</button>
-            <!-- <button @click="disconnect();">Disconnect</button> -->
         </div>
         <div class="connected" v-if="connected">
             <textarea v-model="code">

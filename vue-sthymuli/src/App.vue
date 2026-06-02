@@ -106,12 +106,12 @@ import TheWelcome from './components/TheWelcome.vue' */
   z-index: 2;
   border-style:solid;
   border-width: 1px;
-  border-radius: 4% / 5%;
+  border-radius: 2vmin;/*4% / 5%;*/
   box-shadow: none;
   align-items: center;
   text-align: center;
   width: 40%;
-  height: 60%;
+  /* height: 60%; */
 }
 .blur {
   position: fixed;

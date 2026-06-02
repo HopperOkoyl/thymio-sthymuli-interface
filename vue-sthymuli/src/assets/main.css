@@ -15,7 +15,36 @@
 }
 
 #app, #connection-popup {
-  background-color: #FCFCFC;
+  /* background-color: #FCFCFC; */
+  /* Abstract colorful paint */
+  background-image: url(bg1-pexels-steve-30486228.jpg);
+
+  /* Building blocks */
+  /* background-image: url(bg2-pexels-julia-bataeva-2150297626-31061860.jpg); */
+
+  /* Drawing white on black, school learn math etc */
+  /* background-image: url(bg3-chenspec-back-to-school-6305131_1920.jpg); */
+
+  /* Imperfect drawing plants */
+  background-image: url(bg4-anhl202-drawing-7279358_1920.jpg);
+
+  /* Repeated grey and orange pattern */
+  /* background-image: url(bg5-jimette-ornament-1791301_1920.jpg); */
+
+  /* Repeated black and white flower pattern */
+  /* background-image: url(bg6-jimette-ornament-1762198_1920.jpg); */
+
+  /* Mandala */
+  /* background-image: url(bg7-mandala_world-flower-6717262_1920.jpg); */
+
+  /* Livre */
+  /* background-image: url(bg8-openclipart-vectors-book-2028349_1920.png); */
+
+    /* Puzzle drawing missing piece */
+  /* background-image: url(bg9-alexas_fotos-puzzle-700381_1920.jpg); */
+
+  background-size:cover;
+  background-position: 0%;
   color: #222222;
 }
 

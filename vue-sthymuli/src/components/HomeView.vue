@@ -53,7 +53,7 @@
         height: 100%;
         width: 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
         align-items: center;
         /* background-color: aqua; */
     }
@@ -66,31 +66,31 @@
 
     .place-holder-images {
         background-color: lightgray;
-        /* padding: 30% 10% 30% 10%; */
-        padding: 120px 20px 120px 20px;
+        border-radius: 1vmin;
+        padding: 30% 10% 30% 10%;
+        /* padding: 120px 20px 120px 20px; */
     }
     /* Menu style */
     .Teacher, .Challenges, .Sandbox {
-        /* outline: 2px solid black; */
         display: flex;
         flex-direction: column;
-        border-radius: 10vmin / 10vmin;
-        justify-content: space-around;
+        border-radius: 7vmin;
+        justify-content: space-evenly;
         height: 90%;
     }
     .Teacher {
-        background-color: red; 
-        /* flex: 1; */ /*not compatible with space-between*/
+        background-color: rgba(200, 0, 0, 0.9); 
+        /* flex: 1; */ /*not compatible with space-evenly etc*/
         width: 20%;
     }
     .Challenges {
-        background-color: blue;
-        /* flex: 2 2 0; */ /*not compatible with space-between*/
+        background-color: rgba(0,0,200,0.9);
+        /* flex: 2 2 0; */ /*not compatible with space-evenly etc*/
         width: 30%;
     }
     .Sandbox {
-        background-color: green;
-        /* flex : 1; */ /*not compatible with space-between*/
+        background-color: rgba(0,200,0,0.9);
+        /* flex : 1; */ /*not compatible with space-evenly etc*/
         width: 20%;
     }
     .router-link {
