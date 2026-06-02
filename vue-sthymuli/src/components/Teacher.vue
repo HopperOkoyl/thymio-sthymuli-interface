@@ -80,26 +80,26 @@
   #classTopic-0 {
     top: 10%;
     left: 10%;
-    background-color: lightblue;
+    background-color: rgba(173, 216, 230, 0.96);
   }
   #classTopic-1 {
     top: 50%;
     left: 20%;
-    background-color: beige;
+    background-color: rgba(245, 245, 220, 0.95);
   }
   #classTopic-2 {
     top: 20%;
     left: 35%;
-    background-color: aquamarine;
+    background-color: rgba(127, 255, 212, 0.91);
   }
   #classTopic-3 {
     top: 45%;
     left: 75%;
-    background-color: lightcoral;
+    background-color: rgba(240, 128, 128, 0.95);
   }
   #classTopic-4 {
     top: 10%;
     left: 55%;
-    background-color: lightslategray;
+    background-color: rgba(119, 136, 153, 0.95);
   }
 </style>
