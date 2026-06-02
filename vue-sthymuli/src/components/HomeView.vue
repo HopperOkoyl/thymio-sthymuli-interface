@@ -33,7 +33,7 @@
         <ul class="nav-menu">
             <li v-for="menu in secondaryMenus" :key="menu.name" :class="menu.name">
                 <RouterLink :to=menu.name.toLowerCase() class="router-link">
-                    <p class="place-holder-images">PlaceHolder image</p>
+                    <p class="place-holder-images" :class="menu.name"><!--PlaceHolder image--></p>
                     {{ menu.name }}
                 </RouterLink>
             </li>
@@ -68,33 +68,58 @@
         background-color: lightgray;
         border-radius: 1vmin;
         padding: 30% 10% 30% 10%;
+        background-position: top;
+        background-size: contain;
+        background-repeat: no-repeat;
+
         /* padding: 120px 20px 120px 20px; */
     }
     /* Menu style */
-    .Teacher, .Challenges, .Sandbox {
+    li.Teacher, li.Challenges, li.Sandbox {
         display: flex;
         flex-direction: column;
         border-radius: 7vmin;
         justify-content: space-evenly;
         height: 90%;
     }
-    .Teacher {
+    li.Teacher {
         background-color: rgba(200, 0, 0, 0.9); 
         /* flex: 1; */ /*not compatible with space-evenly etc*/
         width: 20%;
     }
-    .Challenges {
+    li.Challenges {
         background-color: rgba(0,0,200,0.9);
         /* flex: 2 2 0; */ /*not compatible with space-evenly etc*/
         width: 30%;
     }
-    .Sandbox {
+    li.Sandbox {
         background-color: rgba(0,200,0,0.9);
         /* flex : 1; */ /*not compatible with space-evenly etc*/
         width: 20%;
     }
     .router-link {
         margin: 30% 10% 30% 10%;
+        transition-duration: 0.2s;
+    }
+    .router-link:not(:hover):not(:visited) {
+        color:rgb(252, 252, 252);
+    }
+    .router-link:visited {
+        color:rgb(102, 252, 252);
+    }
+    .router-link:hover {
+        color:rgb(202, 202, 202);
+        background-color: rgb(76, 175, 80); /* Green */
+    }
+
+    p.Teacher {
+        background-image: url(src/assets/graduation-hat.png);
+    }
+    p.Challenges {
+        background-image: url(src/assets/online-course.png);
+    }
+    p.Sandbox {
+        background-image: url(src/assets/student-bag.png);
     }
     
 

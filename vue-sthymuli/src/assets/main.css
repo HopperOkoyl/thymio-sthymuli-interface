@@ -14,7 +14,7 @@
   justify-content: space-between;
 }
 
-#app, #connection-popup {
+#app {
   /* background-color: #FCFCFC; */
   /* Abstract colorful paint */
   background-image: url(bg1-pexels-steve-30486228.jpg);
@@ -44,8 +44,12 @@
   /* background-image: url(bg9-alexas_fotos-puzzle-700381_1920.jpg); */
 
   background-size:cover;
-  background-position: 0%;
+  background-position: top;
   color: #222222;
+}
+#connection-popup {
+    background-color: rgba(252, 252, 252, 1);
+    color: #222222;
 }
 
 /* .MainMenu {
