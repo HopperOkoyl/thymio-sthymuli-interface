@@ -31,23 +31,14 @@
     }
 </script>
 <template>
-    <button @click="toggleConnectionWindow()" class="connectivityStatus"><p><img :src="connectionStatus ? check : cross" alt="Check icon"> Thymio {{connectionStatus ? "connected" : "disconnected"}}</p></button>
+    <button @click="toggleConnectionWindow()" class="no-button"><img class="icon-image" :src="connectionStatus ? check : cross" :alt="connectionStatus ? 'tick' : 'cross'"><p>Thymio {{connectionStatus ? "connected" : "disconnected"}}</p></button>
 </template>
 
 <style scoped>
 
-    img {
+    /* .icon-image {
         height: 1em;
         width: auto;
         vertical-align: middle;
-    }
-    .connectivityStatus {
-        border:0;
-        text-align: left;
-        padding: 0;
-    }
-
-    .connectivityStatus:not(:hover) {
-        background-color: inherit;
-    }
+    } */
 </style>

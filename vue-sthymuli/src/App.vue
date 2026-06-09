@@ -10,6 +10,15 @@ import TheWelcome from './components/TheWelcome.vue' */
   import Sandbox from './components/Sandbox.vue';
   import ThymioConnection from './components/ThymioConnection.vue';
   import ConnectionStatus from './components/ConnectionStatus.vue';
+  import settingsIconDrawing from './assets/noun-settings-6846720.svg';
+  import settingsIconSimple from './assets/noun-setting-simple-4547794.svg';
+  import flagFR from './assets/FlagFR.png';
+  import flagES from './assets/FlagES.png';
+  import flagDE1 from './assets/FlagDE1.png';
+  import flagDE2 from './assets/FlagDE2.png';
+  import flagIT from './assets/FlagIT.png';
+  import flagEN from './assets/FlagEN.png';
+  import dropDownArrow from './assets/drop-down-arrow.png';
   // enum MenuNames {
   //   Home = 'Home',
   //   Teacher = 'Teacher',
@@ -33,6 +42,14 @@ import TheWelcome from './components/TheWelcome.vue' */
         // Popup
         show: false,
         isConnected: false,
+        settingsIconDrawing,
+        settingsIconSimple,
+        flagFR,
+        flagES,
+        flagDE: flagDE1, //flagDE2
+        flagEN,
+        flagIT,
+        dropDownArrow,
       }
     },
     //TODO: Adding router for navigation
@@ -50,7 +67,22 @@ import TheWelcome from './components/TheWelcome.vue' */
 
 <template>
   <div class="screen">
-    <ConnectionStatus id="connection-status" @toggleConnectionWindow="toggleConnectionWindow()" :connectionStatus="isConnected"></ConnectionStatus>
+    <div id="top-bar">
+      <div class="top-bar-section left-secion">
+        <ConnectionStatus class="top-bar-elem" @toggleConnectionWindow="toggleConnectionWindow()" :connectionStatus="isConnected"></ConnectionStatus>
+      </div>
+      <div class="top-bar-section empty"></div>
+      <div class="top-bar-section right-section">
+        <div id="top-bar-right">
+          <div id="language" class="top-bar-elem">
+            <button class="no-button"><img class="icon-image smaller" :src="dropDownArrow" alt="Drop down arrow"></img><img class="icon-image" :src="flagEN" alt="Flag"></img></button>
+          </div>
+          <div id="settings" class="top-bar-elem">
+            <button class="no-button"><img class="icon-image larger" :src="settingsIconSimple" alt="Gear"></img><p>Settings</p></button>
+          </div>
+        </div>
+      </div>
+    </div>
     <main>
       <dialog id="connection-popup"
         :open="show"
@@ -102,6 +134,28 @@ import TheWelcome from './components/TheWelcome.vue' */
   flex-direction: column;
   height: 100%;
 }
+main {
+  height: 100%;
+  flex: 19 19 19;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+
+
+/* Popup */
+
+.popup-topbar {
+  text-align: right;
+}
+.closeButton {
+  border-style: none;
+}
+.closeButton:not(:hover) {
+  background-color: inherit;
+}
 #connection-popup {
   z-index: 2;
   border-style:solid;
@@ -123,28 +177,74 @@ import TheWelcome from './components/TheWelcome.vue' */
   backdrop-filter: blur(3px);
   background-color: rgba(255, 255, 255, 0.65);
 }
-main {
-  height: 100%;
-  flex: 19 19 19;
+
+
+
+
+/* Top bar */
+
+#top-bar {
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+}
+.top-bar-section {
+  display: flex;
+}
+.top-bar-section.empty {
+  flex: 1 1 auto;
+}
+.top-bar-section.right-section {
+  min-width: 25%;
+}
+#top-bar-right {
+  display:flex;
+  flex: 1 1 auto;
+  justify-content: space-evenly;
+}
+.top-bar-section.left-secion {
+  min-width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.top-bar-elem {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+}
+
+#language, #settings {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-#connection-status {
-  flex: 1 1 1;
+
+.no-button {
+  flex: 1 1 auto;
+  padding: 0% 10%;
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.popup-topbar {
-  text-align: right;
-}
-.closeButton {
-  border-style: none;
+#language .no-button {
+  justify-content: center;
 }
 
-.closeButton:not(:hover) {
-  background-color: inherit;
+.no-button p {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-/* #back-button {
+/* .icon-image.larger {
+  height: 2em;
 } */
+.icon-image.smaller {
+  height: 1.5em;
+}
+
+#language .icon-image {
+  padding: 5%;
+}
+
 </style>

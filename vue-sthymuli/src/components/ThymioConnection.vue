@@ -7,6 +7,10 @@
 
     //Put in dependencies in package.json:
     //     "thymio3-ts-api": "file:../../../thymio3-ts-api"
+    type FirmwareInfo = {
+            esp32_ver: number;
+            stm32_ver: number;
+        };
     export default defineComponent({
         props: {
             popupState: Boolean,
@@ -30,6 +34,7 @@
                 cross,
                 connected: false,
                 loading: false,
+                firmwareInfo: this.FirmwareInfo,
                 code: `
 import thymio
 import time
@@ -67,26 +72,36 @@ while 1:
         methods: {
             connect() {
                 if (this.thymio) {
-                    this.loading = true
-                    this.thymio.requestAndConnect()
-                    console.log("Connection request sent")
+                    this.loading = true;
+                    this.thymio.requestAndConnect();
+                    console.log("Connection request sent");
                 }
             },
             disconnect() {
                 if (this.thymio) {
-                    this.loading = false
-                    this.connected = false
-                    this.thymio.disconnect()
-                    console.log("Disconnection request sent")
+                    this.loading = false;
+                    this.connected = false;
+                    this.thymio.disconnect();
+                    console.log("Disconnection request sent");
                 }
             },
             async executeClick() {
                 await this.thymio.sendPythonScript(this.code);
                 await this.thymio.executeLoadedScript();
+                console.log("Execution request sent.");
             },
             async stopClick() {
                 await this.thymio.stopScriptExecution();
+                console.log("Stop execution request sent.");
             },
+            async debugAction() {
+                console.log("test");
+
+                // console.log("request firmwareinfo sent");
+                // console.log(await this.thymio.getFirmwareInfo());
+                
+                await this.thymio.updateFirmware();
+            }
         }
     })
 </script>
@@ -97,6 +112,7 @@ while 1:
     <div class="popup">
         <h1>Connection to Thymio</h1>
         <div>
+            <button @click="debugAction()">Debug button</button>
             <button @click="connected ? disconnect() : connect()"> {{connected ? 'Disconnect' : 'Connect'}}</button>
         </div>
         <div class="connected" v-if="connected">

@@ -51,6 +51,23 @@
     background-color: rgba(252, 252, 252, 1);
     color: #222222;
 }
+.no-button {
+  border:0;
+  text-align: left;
+  padding: 0;
+}
+.no-button:not(:hover) {
+  /* background-color: inherit; */
+  background: none;
+}
+.icon-image {
+  height: 2.5em;
+  width: auto;
+  vertical-align: middle;
+}
+p {
+  font-size: larger;
+}
 
 /* .MainMenu {
   display: flex;
