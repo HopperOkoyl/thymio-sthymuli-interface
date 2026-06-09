@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { COLOR } from '../constants';
     // enum MenuNames {
     //     Home = 'Home',
     //     Teacher = 'Teacher',
@@ -15,6 +16,19 @@
                     { name: "Challenges", value: 2 },
                     { name: "Sandbox", value: 3 }
                 ],
+                firstColor: 'red',
+                secondColor: 'blue',
+                thirdColor: 'green',
+                currentPalette: 0,
+                firstPalette: {name: "pastel", first: COLOR.HexCodeSapphire, second: COLOR.HexCodeSandyBrown, third: COLOR.HexCodeSageGreen, bonus: COLOR.HexCodeAshGrey},
+                colorPalette: [
+                    {name: "pastel", first: COLOR.HexCodeSapphire, second: COLOR.HexCodeSandyBrown, third: COLOR.HexCodeSageGreen, bonus: COLOR.HexCodeAshGrey},
+                    {name: "dark-pastel", first: COLOR.HexCodeSapphire, second: COLOR.HexCodeSandyBrown, third: COLOR.HexCodeJungleGreen, bonus: COLOR.HexCodeLavenderGrey,},
+                    {name: "contrast", first: COLOR.HexCodeSapphire, second: COLOR.HexCodeMintLeaf, third: COLOR.HexCodeDustyMauve},
+                    {name: "bright-contrast", first: COLOR.HexCodeSapphire, second: COLOR.HexCodeAmberGlow, third: COLOR.HexCodeBrightFern}
+
+                ]
+                // currentPalette: firstPalette,
             }
         },
         computed: {
@@ -29,6 +43,7 @@
 </script>
 
 <template>
+    <button @click="currentPalette = (currentPalette + 1) % 4">Change palette: {{ currentPalette }}</button>
     <nav>
         <ul class="nav-menu">
             <li v-for="menu in secondaryMenus" :key="menu.name" :class="menu.name">
@@ -83,17 +98,22 @@
         height: 90%;
     }
     li.Teacher {
-        background-color: rgba(200, 0, 0, 0.9); 
+        /* background-color: rgba(200, 0, 0, 0.9);  */
+        /* --red: #c80000e6;
+        background-color: color-mix(in srgb, var(--red), transparent 10%); */
+        background-color: color-mix(v-bind('colorPalette[currentPalette]?.first'), transparent 10%);
         /* flex: 1; */ /*not compatible with space-evenly etc*/
         width: 20%;
     }
     li.Challenges {
-        background-color: rgba(0,0,200,0.9);
+        /* background-color: rgba(0,0,200,0.9); */
+        background-color: color-mix(v-bind('colorPalette[currentPalette]?.second'), transparent 10%);
         /* flex: 2 2 0; */ /*not compatible with space-evenly etc*/
         width: 30%;
     }
     li.Sandbox {
-        background-color: rgba(0,200,0,0.9);
+        /* background-color: rgba(0,200,0,0.9); */
+        background-color: color-mix(v-bind('colorPalette[currentPalette]?.third'), transparent 10%);
         /* flex : 1; */ /*not compatible with space-evenly etc*/
         width: 20%;
     }
