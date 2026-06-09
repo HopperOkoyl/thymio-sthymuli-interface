@@ -61,6 +61,7 @@
   background: none;
 }
 .icon-image {
+  padding: 5%;
   height: 2.5em;
   width: auto;
   vertical-align: middle;

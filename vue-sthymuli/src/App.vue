@@ -222,12 +222,8 @@ main {
   flex: 1 1 auto;
   padding: 0% 10%;
   display:flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-#language .no-button {
   justify-content: center;
+  align-items: center;
 }
 
 .no-button p {
@@ -241,10 +237,6 @@ main {
 } */
 .icon-image.smaller {
   height: 1.5em;
-}
-
-#language .icon-image {
-  padding: 5%;
 }
 
 </style>
