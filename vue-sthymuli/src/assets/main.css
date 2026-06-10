@@ -48,7 +48,7 @@
   color: #222222;
 }
 #connection-popup {
-    background-color: rgba(252, 252, 252, 1);
+    background-color: #fcfcfc;
     color: #222222;
 }
 .no-button {
@@ -61,7 +61,7 @@
   background: none;
 }
 .icon-image {
-  padding: 5%;
+  padding: 5px;
   height: 2.5em;
   width: auto;
   vertical-align: middle;

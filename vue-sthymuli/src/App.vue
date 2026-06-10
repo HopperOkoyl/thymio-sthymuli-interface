@@ -199,28 +199,27 @@ main {
 #top-bar-right {
   display:flex;
   flex: 1 1 auto;
-  justify-content: space-evenly;
+  justify-content: right;
 }
 .top-bar-section.left-secion {
   min-width: 25%;
-  display: flex;
-  justify-content: space-evenly;
+  justify-content: left;
 }
 .top-bar-elem {
   display: flex;
-  flex: 1 1 auto;
+  /* flex: 1 1 auto; */
   justify-content: center;
 }
 
 #language, #settings {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
 }
 
 .no-button {
-  flex: 1 1 auto;
-  padding: 0% 10%;
+  /* flex: 1 1 auto; */
+  padding: 0 10px;
   display:flex;
   justify-content: center;
   align-items: center;
