@@ -107,7 +107,10 @@
     .description {
         margin: 10px;
     }
-
+    .Teacher.block {
+        justify-content: center;
+        align-items: center;
+    }
 
     .dots {
         display: flex;
