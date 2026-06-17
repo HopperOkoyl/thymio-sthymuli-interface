@@ -12,9 +12,9 @@
                 // MenuNames
                 MenuNames: [
                     { name: "Home", value: 0 },
-                    { name: "Teacher", value: 1 },
-                    { name: "Challenges", value: 2 },
-                    { name: "Sandbox", value: 3 }
+                    { name: "Teacher", iconUrl: "src/assets/graduation-hat.png", value: 1 },
+                    { name: "Challenges", iconUrl: "src/assets/online-course.png", value: 2 },
+                    { name: "Sandbox", iconUrl: "src/assets/student-bag.png", value: 3 }
                 ],
                 firstColor: 'red',
                 secondColor: 'blue',
@@ -31,6 +31,15 @@
                 // currentPalette: firstPalette,
             }
         },
+        methods: {
+            handleSpacebar(event: KeyboardEvent) {
+                // console.log(`key pressed: ${event.key}`)
+                if (event.key === ' ') {
+                    console.log("space pressed")
+                    this.currentPalette = (this.currentPalette + 1) % colorPalettes.length
+                }
+            }
+        },
         computed: {
             // allMenus() {
             //     return Object.values(MenuNames)
@@ -38,56 +47,68 @@
             secondaryMenus() {
                     return this.MenuNames.filter(m => m.name !== "Home")
             }
+        },
+        async mounted() {
+            window.addEventListener('keydown', this.handleSpacebar);
         }
     }
 </script>
 
 <template>
-    <button @click="currentPalette = (currentPalette + 1) % colorPalettes.length">Change palette: {{ colorPalettes[currentPalette]?.name }}</button>
-    <nav>
+    <!-- <button @click="currentPalette = (currentPalette + 1) % colorPalettes.length">Change palette: {{ colorPalettes[currentPalette]?.name }}</button> -->
+    <nav class="external-container">
         <ul class="nav-menu">
             <li v-for="menu in secondaryMenus" :key="menu.name" :class="menu.name">
                 <RouterLink :to=menu.name.toLowerCase() class="router-link">
-                    <p class="place-holder-images" :class="menu.name"><!--PlaceHolder image--></p>
-                    {{ menu.name }}
+                    <h1>{{ menu.name }}</h1>
+                    <img class="place-holder-images image" :src="menu.iconUrl" alt=""/>
+                    <!-- <div class="place-holder-images image" :class="menu.name"></div> -->
                 </RouterLink>
             </li>
         </ul>
     </nav>
 </template>
 
+
 <style scoped>
     .nav-menu {
         list-style: none;
+        list-style-type: none;
         padding: 0;
         margin: 0;
-        list-style-type: none;
         text-align: center;
 
 
-        height: 100%;
-        width: 100%;
+        /* height: 100%;
+        width: 100%; */
         display: flex;
+        flex: 1 1 auto;
         justify-content: space-evenly;
         align-items: center;
         /* background-color: aqua; */
     }
     nav {
-        height: 100%;
-        width: 100%;
-        /* display: flex;
-        flex-direction: column; */
+        /* height: 100%;
+        width: 100%; */
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
     }
 
     .place-holder-images {
-        background-color: lightgray;
-        border-radius: 1vmin;
-        padding: 30% 10% 30% 10%;
-        background-position: top;
+        background-color: inherit;
+        /* border-radius: 1vmin; */
+        min-height: 0;
+        min-width: 0;
+        max-width: 90%;
+        max-height: 50%;
+        /* width: 100%;
+        height: 100%; */
+        /* height: auto;
+        aspect-ratio: 1; */
+        /* background-position: center;
         background-size: contain;
-        background-repeat: no-repeat;
-
-        /* padding: 120px 20px 120px 20px; */
+        background-repeat: no-repeat; */
     }
     /* Menu style */
     li.Teacher, li.Challenges, li.Sandbox {
@@ -95,31 +116,36 @@
         flex-direction: column;
         border-radius: 7vmin;
         justify-content: space-evenly;
-        height: 90%;
+        /* flex: 1 1 auto; */ /*not compatible with space-evenly etc*/
+    }
+    li.Teacher, li.Sandbox {
+        /* font-size:1rem; */
+        width: 20%;
+        height: 70%;
     }
     li.Teacher {
-        /* background-color: rgba(200, 0, 0, 0.9);  */
-        /* --red: #c80000e6;
-        background-color: color-mix(in srgb, var(--red), transparent 10%); */
-        background-color: color-mix(v-bind('colorPalettes[currentPalette]?.first'), transparent 10%);
-        /* flex: 1; */ /*not compatible with space-evenly etc*/
-        width: 20%;
+        background-color: color-mix(v-bind('colorPalettes[currentPalette]?.first'), transparent var(--transparency));
     }
     li.Challenges {
-        /* background-color: rgba(0,0,200,0.9); */
-        background-color: color-mix(v-bind('colorPalettes[currentPalette]?.second'), transparent 10%);
-        /* flex: 2 2 0; */ /*not compatible with space-evenly etc*/
-        width: 30%;
+        padding: clamp(10px, 10%, 20px) clamp(10px, 10%, 20px);
+        background-color: color-mix(v-bind('colorPalettes[currentPalette]?.second'), transparent var(--transparency));
+        width: 40%;
+        height: 80%;
+        /* font-size:1.3rem; */
     }
     li.Sandbox {
-        /* background-color: rgba(0,200,0,0.9); */
-        background-color: color-mix(v-bind('colorPalettes[currentPalette]?.third'), transparent 10%);
-        /* flex : 1; */ /*not compatible with space-evenly etc*/
-        width: 20%;
+        background-color: color-mix(v-bind('colorPalettes[currentPalette]?.third'), transparent var(--transparency));
     }
     .router-link {
-        margin: 30% 10% 30% 10%;
         transition-duration: 0.2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1 1 auto;
+    }
+    h1 {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
     }
     .router-link:not(:hover):not(:visited) {
         color:rgb(252, 252, 252);
@@ -129,39 +155,9 @@
     }
     .router-link:hover {
         color:rgb(202, 202, 202);
-        background-color: rgb(76, 175, 80); /* Green */
-    }
-
-    p.Teacher {
-        background-image: url(src/assets/graduation-hat.png);
-    }
-    p.Challenges {
-        background-image: url(src/assets/online-course.png);
-    }
-    p.Sandbox {
-        background-image: url(src/assets/student-bag.png);
+        background-color: rgb(76, 175, 80);
     }
     
-
-
-    /* .nav {
-        list-style-type: none;
-        padding: 0px;
-        margin: 0px;
-        text-align: center;
-    } */
-    /* .li {
-        display: inline-block;
-        padding: 20px;
-    } */
-    /* .li {
-        display: inline-block;
-        border: solid 1px;
-        border-radius: 30%;
-        background-color: lightgray;
-        border-color: whitesmoke;
-        padding: 20px;
-    } */
     /* .nav li:hover {
         position: relative;
         background-color: whitesmoke;

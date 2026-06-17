@@ -4,7 +4,6 @@ import { createRouter } from 'vue-router'
 import TheWelcome from './components/TheWelcome.vue' */
   // import MainMenuButton from './components/Button.vue';
   import InterfaceActivity from './components/3dInterfaceActivity.vue';
-  import TeacherClassSelection from './components/TeacherClassSelection.vue';
   import Teacher from './components/Teacher.vue';
   import Challenges from './components/Challenges.vue';
   import Sandbox from './components/Sandbox.vue';
@@ -30,7 +29,6 @@ import TheWelcome from './components/TheWelcome.vue' */
     components: {
       // MainMenuButton,
       InterfaceActivity,
-      TeacherClassSelection,
       Teacher,
       Challenges,
       Sandbox,
@@ -91,7 +89,7 @@ import TheWelcome from './components/TheWelcome.vue' */
         <!-- <ThymioConnection v-if="show"></ThymioConnection> -->
         <ThymioConnection :popupState="show" @isThymioConnected="(newStatus) => isConnected = newStatus"></ThymioConnection>
       </dialog>
-      <p><strong>Current route path:</strong> {{ $route.fullPath }}</p>
+      <!-- <p><strong>Current route path:</strong> {{ $route.fullPath }}</p> -->
       <div v-if="show" @click="toggleConnectionWindow();console.log('Connection window closed by clicking on blur.')" class="blur"></div>
       <div>
         <button id="back-button" v-if="$route.name !== 'Home'" @click="$router.back()">Back</button>
@@ -132,14 +130,16 @@ import TheWelcome from './components/TheWelcome.vue' */
 .screen {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1 1 auto;
+  /* height: 100%; */
 }
 main {
-  height: 100%;
-  flex: 19 19 19;
+  /* height: 100%; */
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* padding: 0 5%; */
 }
 
 
@@ -186,6 +186,7 @@ main {
 #top-bar {
   background-color: rgba(255, 255, 255, 0.9);
   display: flex;
+  /* min-width: 5%; */
 }
 .top-bar-section {
   display: flex;

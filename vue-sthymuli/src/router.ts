@@ -9,6 +9,13 @@ import Sandbox from './components/Sandbox.vue'
 import Teacher from './components/Teacher.vue'
 import Challenges from './components/Challenges.vue'
 import TeacherClass from './components/TeacherClass.vue'
+import ChallengesRoom from './components/ChallengesRoom.vue'
+import Instructions from './components/Instructions.vue'
+import Description from './components/Description.vue'
+import NotFound from './components/NotFound.vue'
+import Settings from './components/Settings.vue'
+import TeacherSettings from './components/TeacherSettings.vue'
+import Licence from './components/Licence.vue'
 
 declare module 'vue-router' {
     interface RouteMeta {
@@ -18,21 +25,35 @@ declare module 'vue-router' {
 
 const routes = [
     { path: '/', name: 'Home', component: HomeView, meta: {title: 'Home'} },
-    { path: '/about', component: AboutView , meta: {title: 'About'}},
-    { path: '/sandbox', component: Sandbox, meta: {title: 'Sandbox'} },
-    { path: '/teacher', component: Teacher, meta: {title: 'Teacher'} },
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound, meta: {title: 'NotFound'} } ,
+    { path: '/settings', name: 'Settings', component: Settings, meta: {title: 'settings'}  },
+    { path: '/about', name: 'About', component: AboutView , meta: {title: 'About'} },
+    { path: '/sandbox', name: 'Sandbox', component: Sandbox, meta: {title: 'Sandbox'} },
+    { path: '/teacher',
+        name: 'Teacher',
+        component: Teacher,
+        meta: {title: 'Teacher'},
+        children: [
+            { path: 'teacher-settings', name: 'teacher-settings', component: TeacherSettings, meta: {title: 'Teachcher settings'}  },
+        ] },
     { path: '/teacher/:topicId',
-        component: TeacherClass,
         name: 'TeacherClass',
-        meta: {title: 'TeacherClass'},
-        // children: [{
-        //     path: '', component: TeacherClass,
-        // }],
-        // children: [{
-        //     path: '/Computer Science', name: 'CS', component: Sandbox, meta: {title: 'CS'
-        // }}],
+        component: TeacherClass,
+        meta: {title: 'Teacher Selection Menu'},
+        children: [
+            { path: 'Description/:activityID', name: 'Description', component: Description, meta: {title: 'Description'} },
+        ]
     },
-    { path: '/challenges', component: Challenges, meta: {title: 'Challenges'} },
+    { path: '/challenges', name: 'Challenges', component: Challenges, meta: {title: 'Challenges'} },
+    { path: '/challenges/:roomID',
+        component: ChallengesRoom,
+        name: 'ChallengesRoom',
+        meta: {title: 'ChallengesRoom'},
+        children: [
+            { path: 'Instructions/:activityID', name: 'Instructions', component: Instructions, meta: {title: 'Instructions'} },
+        ]
+    },
+    { path: '/Licence', name: 'Licence', component: Licence, meta: {title: 'Licence'} },
 ]
 
 // export const router = createRouter({ //SSR and non-browser environment

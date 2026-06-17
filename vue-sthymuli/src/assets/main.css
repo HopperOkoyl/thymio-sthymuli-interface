@@ -15,6 +15,7 @@
 }
 
 #app {
+  --transparency: 3%;
   /* background-color: #FCFCFC; */
   /* Abstract colorful paint */
   background-image: url(bg1-pexels-steve-30486228.jpg);
@@ -69,7 +70,32 @@
 p {
   font-size: larger;
 }
+.Teacher {
+  background-color: color-mix(in srgb, #FFDFBA, transparent var(--transparency))/* #FFDFBAE6; */
+}
+.Teacher .a {
 
+}
+.Teacher.block {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 80%; */
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 10px;
+}
+.Teacher.block h1 {
+  text-align: center;
+}
+.Challenges {
+  background-color: color-mix(in srgb, #BAFFC9, transparent var(--transparency)) /* #BAFFC9E6; */
+}
+.Sandbox {
+  background-color: color-mix(in srgb, #BAE1FFE6, transparent var(--transparency)) /* #BAE1FFE6; */
+}
 /* .MainMenu {
   display: flex;
   justify-content: center;

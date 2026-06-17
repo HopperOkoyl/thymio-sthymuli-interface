@@ -22,15 +22,17 @@
 
 <template>
   <div class="external-container">
-    <p>{{ currentPage }}</p>
-    <div class="container">
-      <ul class="allTopics">
-        <li v-for="classTopic in classes" :key="classTopic.topic" class="allTopics">
-          <RouterLink :to="{ name: 'TeacherClass', params: { topicId: classTopic.topic } }" class="allTopics" :id="'classTopic-' + classTopic.value"> {{ classTopic.topic }} </RouterLink>
-        </li>
-      </ul>
-    </div>
-    <div v-if="currentPage === 'Computer Science'"><p>CS chosen</p></div>
+    <!-- <div class="Teacher block"> -->
+      <p>{{ currentPage }}</p>
+      <div class="container Teacher block">
+        <ul class="allTopics">
+          <li v-for="classTopic in classes" :key="classTopic.topic" class="allTopics">
+            <RouterLink :to="{ name: 'TeacherClass', params: { topicId: classTopic.topic } }" class="allTopics" :id="'classTopic-' + classTopic.value"> {{ classTopic.topic }} </RouterLink>
+          </li>
+        </ul>
+      </div>
+    <!-- <div v-if="currentPage === 'Computer Science'"><p>CS chosen</p></div> -->
+    <!-- </div> -->
   </div>
 </template>
 

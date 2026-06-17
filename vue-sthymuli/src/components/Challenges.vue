@@ -27,8 +27,10 @@
 
 <template>
   <div class="external-container">
-    <div class="room" v-for="room in challengesRooms">
-      <button>{{ room.name }}</button>
+    <div class="Challenges">
+      <div class="room" v-for="room in challengesRooms">
+        <button>{{ room.name }}</button>
+      </div>
     </div>
   </div>
 </template>
