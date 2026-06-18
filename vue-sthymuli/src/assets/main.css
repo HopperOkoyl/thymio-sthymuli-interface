@@ -70,6 +70,13 @@
 p {
   font-size: larger;
 }
+.block {
+  flex: 1 1 auto;
+  display: flex;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 10px;
+}
 .Teacher {
   background-color: color-mix(in srgb, #FFDFBA, transparent var(--transparency))/* #FFDFBAE6; */
 }

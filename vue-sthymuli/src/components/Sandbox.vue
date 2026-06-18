@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div class="image-fullscreen-container Sandbox">
+  <div class="image-fullscreen-container Sandbox block">
     <img src="../assets/Final-iteration-of-Sthymulis-VPL3-interface.png" alt="Classical sandbox placeholder" />
   </div>
 </template>

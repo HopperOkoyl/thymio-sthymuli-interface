@@ -1,4 +1,5 @@
 <script lang="ts">
+  import emptyHouse from '../assets/noun-empty-house-5431675.svg'
   export default {
     // emits: ['buttonClicked'],
     methods: {
@@ -19,7 +20,8 @@
           { name: "Spanish", value: 3 },
           { name: "Biology", value: 4}
         ],
-        currentPage: "topic choice"
+        currentPage: "topic choice",
+        emptyHouse,
       }
     }
   }
@@ -27,9 +29,11 @@
 
 <template>
   <div class="external-container">
-    <div class="Challenges">
-      <div class="room" v-for="room in challengesRooms">
-        <button>{{ room.name }}</button>
+    <div class="Challenges block">
+      <div class="house">
+        <div class="room" v-for="room in challengesRooms">
+          <button>{{ room.name }}</button>
+        </div>
       </div>
     </div>
   </div>
@@ -41,8 +45,15 @@
     width: 100%;
     display: flex;
   }
+  .house {
+    flex: 1 1 auto;
+    background-image: url(../assets/noun-empty-house-5431675.svg);/* v-bind('emptyHouse');*/
+    background-position: center;
+    background-size:contain;
+    background-repeat: no-repeat;
+  }
   .room {
-    height: 100%;
-    width: 100%;
+    /* height: 100%;
+    width: 100%; */
   }
 </style>

@@ -11,7 +11,9 @@
                     {url: "https://www.flaticon.com/free-icons/dropdown-arrow", title: "dropdown arrow icons", attribText: 'Dropdown arrow icons created by Catalin Fertu - Flaticon'},
                 ],
                 nounprojectIcons: [
-                    {attribText: 'setting by SuperNdre from', url: "https://thenounproject.com/browse/icons/term/setting/", target: "_blank", title: "setting Icons", licence: '(CC BY 3.0)'}
+                    {attribText: 'setting by SuperNdre from', url: "https://thenounproject.com/icon/setting-4547794/", target: "_blank", title: "setting Icons", licence: '(CC BY 3.0)'},
+                    {attribText: 'House by Ashok from', url: "https://thenounproject.com/icon/house-6718391/", target: "_blank", title: "House Icons", licence: '(CC BY 3.0)'},
+                    {attribText: 'House by Suryaman from', url: "https://thenounproject.com/icon/house-5431675/", target: "_blank", title:"House Icons", licence: '(CC BY 3.0)'},
                 ]
             }
         }
