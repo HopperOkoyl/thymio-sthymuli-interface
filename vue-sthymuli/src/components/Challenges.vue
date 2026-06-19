@@ -13,12 +13,14 @@
     },
     data() {
       return {
-        challengesRooms: [
-          { name: "Computer Science", value: 0 },
-          { name: "French", value: 1 },
-          { name: "German", value: 2 },
-          { name: "Spanish", value: 3 },
-          { name: "Biology", value: 4}
+        firstFloor: [
+          { name: "Computer Science", iconUrl: 'src/assets/computer.png', value: 0 },
+          { name: "Biology", iconUrl: 'src/assets/leave.png', value: 4},
+        ],
+        secondFloor: [
+          { name: "French", iconUrl: 'src/assets/french.png', value: 1 },
+          { name: "German", iconUrl: 'src/assets/german.png', value: 2 },
+          { name: "Spanish", iconUrl: 'src/assets/spanish.png', value: 3 },
         ],
         currentPage: "topic choice",
         emptyHouse,
@@ -31,8 +33,12 @@
   <div class="external-container">
     <div class="Challenges block">
       <div class="house">
-        <div class="room" v-for="room in challengesRooms">
-          <button>{{ room.name }}</button>
+        <div class="inside">
+          <div class="floor" v-for="floor in [firstFloor, secondFloor]">
+            <RouterLink :to="{name: 'ProgressPath', params: {roomID: room.name}}" class="room no-button" v-for="room in floor">
+              <img :src="room.iconUrl"></img>
+            </RouterLink>
+          </div>
         </div>
       </div>
     </div>
@@ -47,13 +53,55 @@
   }
   .house {
     flex: 1 1 auto;
-    background-image: url(../assets/noun-empty-house-5431675.svg);/* v-bind('emptyHouse');*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../assets/noun-empty-house-5431675.svg);
     background-position: center;
     background-size:contain;
     background-repeat: no-repeat;
   }
+  .inside {
+    position:relative;
+    top: 15%;
+    left: 0.05%;
+    height: 65%;
+    /* width: calc(45% / 65); */
+    aspect-ratio: 1.08;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+  }
+  .floor {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: space-evenly;
+    align-items: center;
+    min-width: 0;
+    min-height: 0;
+  }
   .room {
-    /* height: 100%;
-    width: 100%; */
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    justify-content: center;
+    align-items: center;
+  }
+  .no-button {
+    min-height: 0;
+    min-width: 0;
+    line-height: 0;
+  }
+  .room img {
+    display:block;
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    max-height: 100%;
+    max-width: 100%;
+    width: 20px;
+    height: auto;
+    object-fit: contain;
+    margin: 10%;
   }
 </style>

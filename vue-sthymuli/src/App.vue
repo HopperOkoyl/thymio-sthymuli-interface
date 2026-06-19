@@ -68,12 +68,13 @@ import TheWelcome from './components/TheWelcome.vue' */
     <div id="top-bar">
       <div class="top-bar-section left-secion">
         <ConnectionStatus class="top-bar-elem" @toggleConnectionWindow="toggleConnectionWindow()" :connectionStatus="isConnected"></ConnectionStatus>
+        <button class="no-button top-bar-elem" id="back-button" v-if="$route.name !== 'Home'" @click="$router.back()">Back</button>
       </div>
       <div class="top-bar-section empty"></div>
       <div class="top-bar-section right-section">
         <div id="top-bar-right">
           <div id="language" class="top-bar-elem">
-            <button class="no-button"><img class="icon-image smaller" :src="dropDownArrow" alt="Drop down arrow"></img><img class="icon-image" :src="flagEN" alt="Flag"></img></button>
+            <button class="back no-button"><img class="icon-image smaller" :src="dropDownArrow" alt="Drop down arrow"></img><img class="icon-image" :src="flagEN" alt="Flag"></img></button>
           </div>
           <div id="settings" class="top-bar-elem">
             <button class="no-button"><img class="icon-image larger" :src="settingsIconSimple" alt="Gear"></img><p>Settings</p></button>
@@ -91,9 +92,9 @@ import TheWelcome from './components/TheWelcome.vue' */
       </dialog>
       <!-- <p><strong>Current route path:</strong> {{ $route.fullPath }}</p> -->
       <div v-if="show" @click="toggleConnectionWindow();console.log('Connection window closed by clicking on blur.')" class="blur"></div>
-      <div>
+      <!--<div>
         <button id="back-button" v-if="$route.name !== 'Home'" @click="$router.back()">Back</button>
-      </div>
+      </div>-->
       <RouterView />
     </main>
   </div>
@@ -205,11 +206,23 @@ main {
 .top-bar-section.left-secion {
   min-width: 25%;
   justify-content: left;
+  align-items: center;
 }
 .top-bar-elem {
   display: flex;
   /* flex: 1 1 auto; */
   justify-content: center;
+  align-items: center;
+}
+#back-button {
+  /* border: black;
+  border-radius: 50%;
+  border-style: solid;
+  border-width:medium; */
+  max-height:40px;
+  aspect-ratio: 1;
+  margin: 1%;
+  padding: 4%;
 }
 
 #language, #settings {
@@ -218,19 +231,6 @@ main {
   /* justify-content: center; */
 }
 
-.no-button {
-  /* flex: 1 1 auto; */
-  padding: 0 10px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.no-button p {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
 
 /* .icon-image.larger {
   height: 2em;
@@ -239,4 +239,19 @@ main {
   height: 1.5em;
 }
 
+</style>
+
+<style scoped>
+.no-button {
+  /* flex: 1 1 auto; */
+  padding: 0 10px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.no-button p {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
 </style>

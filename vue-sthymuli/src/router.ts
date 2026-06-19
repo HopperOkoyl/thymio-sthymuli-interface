@@ -9,7 +9,7 @@ import Sandbox from './components/Sandbox.vue'
 import Teacher from './components/Teacher.vue'
 import Challenges from './components/Challenges.vue'
 import TeacherClass from './components/TeacherClass.vue'
-import ChallengesRoom from './components/ChallengesRoom.vue'
+import ProgressPath from './components/ProgressPath.vue'
 import Instructions from './components/Instructions.vue'
 import Description from './components/Description.vue'
 import NotFound from './components/NotFound.vue'
@@ -46,9 +46,9 @@ const routes = [
     },
     { path: '/challenges', name: 'Challenges', component: Challenges, meta: {title: 'Challenges'} },
     { path: '/challenges/:roomID',
-        component: ChallengesRoom,
-        name: 'ChallengesRoom',
-        meta: {title: 'ChallengesRoom'},
+        component: ProgressPath,
+        name: 'ProgressPath',
+        meta: {title: 'ProgressPath'},
         children: [
             { path: 'Instructions/:activityID', name: 'Instructions', component: Instructions, meta: {title: 'Instructions'} },
         ]

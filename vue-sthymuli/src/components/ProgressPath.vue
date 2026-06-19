@@ -3,7 +3,7 @@
 
 <template>
     <div class="image-fullscreen">
-        <h1>Room</h1>
+        <h1>Room {{ $route.params.roomID }}</h1>
         <!-- <img src="" /> -->
     </div>
 </template>
