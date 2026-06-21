@@ -1,7 +1,10 @@
-
 type Color = string
 export const HexCodeBlack: Color = '#000000';
 export const HexCodeWhite: Color = '#FFFFFF';
+
+export const AlmostBlack: Color = '#222222';
+export const AlmostWhite: Color = '#fcfcfc';
+
 export const HexCodeSapphire: Color = '#2B50AA';
 export const HexCodeSandyBrown: Color = "#FC955B";
 export const HexCodeAshGrey: Color = "#B3CBB9";
@@ -23,6 +26,9 @@ export const HexCodeDarkTeal: Color = '#074F57';
 // export const HexCodePastelBlue: Color = '#BAE1FF';
 // export const HexCodePastelBlue: Color = '#BAE1FF';
 
+const root = document.documentElement;
+root.style.setProperty('--almost-black', AlmostBlack);
+root.style.setProperty('--almost-white', AlmostWhite);
 
 // interface Color {
 //     name: string;
@@ -32,13 +38,15 @@ interface Dictionary<T> {
 }
 type ColorDict = Dictionary<Color>
 
+type bgTextColors = { bg: Color, txt?: Color }
+
 export interface ColorPalette {
-    name: Color,
-    first: Color,
-    second: Color,
-    third: Color,
-    suppl1?: Color,
-    suppl2?: Color,
+    name: string,
+    first: bgTextColors,
+    second: bgTextColors,
+    third: bgTextColors,
+    suppl1?: bgTextColors,
+    suppl2?: bgTextColors,
 }
 
 export const COLORS: ColorDict = {
@@ -63,11 +71,11 @@ export const COLORS: ColorDict = {
     'HexCodeDarkTeal': HexCodeDarkTeal,
 };
 
-export const firstPalette: ColorPalette = {name: "sapphire-sandy-sage", first: HexCodeSapphire, second: HexCodeSandyBrown, third: HexCodeSageGreen, suppl1: HexCodeAshGrey};
-export const pastelPalette: ColorPalette = {name: "pastel", first: HexCodePastelOrange, second: HexCodePastelGreen, third: HexCodePastelBlue, suppl1: HexCodePinkMist, suppl2: HexCodeDarkTeal};
-export const darkPalette: ColorPalette = {name: "sapphire-sandy-jungle", first: HexCodeSapphire, second: HexCodeSandyBrown, third: HexCodeJungleGreen, suppl1: HexCodeLavenderGrey,};
-export const contrastPalette: ColorPalette = {name: "sapphire-mint-mauve", first: HexCodeSapphire, second: HexCodeMintLeaf, third: HexCodeDustyMauve};
-export const brightContrastPalette: ColorPalette = {name: "sapphire-amber-fern", first: HexCodeSapphire, second: HexCodeAmberGlow, third: HexCodeBrightFern};
+export const firstPalette: ColorPalette = {name: "sapphire-sandy-sage", first: {bg: HexCodeSapphire}, second: {bg: HexCodeSandyBrown}, third: {bg: HexCodeSageGreen}, suppl1: {bg: HexCodeAshGrey}};
+export const pastelPalette: ColorPalette = {name: "pastel", first: {bg: HexCodePastelOrange, txt: AlmostBlack}, second: {bg: HexCodePastelGreen, txt: AlmostBlack}, third: {bg: HexCodePastelBlue, txt: AlmostBlack}, suppl1: {bg: HexCodePinkMist}, suppl2: {bg: HexCodeDarkTeal}};
+export const darkPalette: ColorPalette = {name: "sapphire-sandy-jungle", first: {bg: HexCodeSapphire}, second: {bg: HexCodeSandyBrown}, third: {bg: HexCodeJungleGreen}, suppl1: {bg: HexCodeLavenderGrey},};
+export const contrastPalette: ColorPalette = {name: "sapphire-mint-mauve", first: {bg: HexCodeSapphire}, second: {bg: HexCodeMintLeaf}, third: {bg: HexCodeDustyMauve}};
+export const brightContrastPalette: ColorPalette = {name: "sapphire-amber-fern", first: {bg: HexCodeSapphire}, second: {bg: HexCodeAmberGlow}, third: {bg: HexCodeBrightFern}};
 
 export const colorPalettes: ColorPalette[] = [
     firstPalette,

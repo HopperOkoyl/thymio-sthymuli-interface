@@ -83,7 +83,7 @@ import TheWelcome from './components/TheWelcome.vue' */
       </div>
     </div>
     <main>
-      <dialog id="connection-popup"
+      <dialog class="connection popup"
         :open="show"
       >
         <div class="popup-topbar"><button class="closeButton" @click="toggleConnectionWindow()">&#x2715;</button></div>
@@ -124,7 +124,7 @@ import TheWelcome from './components/TheWelcome.vue' */
 </template> -->
 
 <style>
-.screen, main, dialog {
+.screen, main {
   background-color: inherit;
   color: inherit;
 }
@@ -132,11 +132,15 @@ import TheWelcome from './components/TheWelcome.vue' */
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  /* height: 100%; */
+  height: 100%;
+
+  --top-bar-proportion: 1;
+  --main-proportion: calc(10 - var(--top-bar-proportion));
 }
 main {
-  /* height: 100%; */
-  flex: 1 1 auto;
+  --proportion: var(--main-proportion);
+  flex: var(--proportion) var(--proportion) auto;
+  max-height: calc(10% * var(--proportion));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -157,7 +161,8 @@ main {
 .closeButton:not(:hover) {
   background-color: inherit;
 }
-#connection-popup {
+.popup {
+  color: inherit;
   z-index: 2;
   border-style:solid;
   border-width: 1px;
@@ -185,8 +190,10 @@ main {
 /* Top bar */
 
 #top-bar {
+  --proportion: var(var(--top-bar-proportion));
   background-color: rgba(255, 255, 255, 0.9);
   display: flex;
+  flex: var(--proportion) var(--proportion) auto;
   /* min-width: 5%; */
 }
 .top-bar-section {
@@ -225,11 +232,11 @@ main {
   padding: 4%;
 }
 
-#language, #settings {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: center; */
-}
+/* #language, #settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
 
 
 /* .icon-image.larger {

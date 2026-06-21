@@ -23,7 +23,7 @@
 <template>
   <div class="external-container">
     <!-- <div class="Teacher block"> -->
-      <p>{{ currentPage }}</p>
+      <!-- <h1>{{ currentPage }}</h1> -->
       <div class="container Teacher block">
         <ul class="allTopics">
           <li v-for="classTopic in classes" :key="classTopic.topic" class="allTopics">

@@ -19,7 +19,7 @@
                 firstColor: 'red',
                 secondColor: 'blue',
                 thirdColor: 'green',
-                currentPalette: 0,
+                currentPalette: 1, // 1 = Pastel Palette
                 colorPalettes,
                 // colorPalette: [
                 //     {name: "sapphire", first: COLOR.HexCodeSapphire, second: COLOR.HexCodeSandyBrown, third: COLOR.HexCodeSageGreen, bonus1: COLOR.HexCodeAshGrey},
@@ -95,21 +95,6 @@
         flex-direction: column;
     }
 
-    .place-holder-images {
-        background-color: inherit;
-        /* border-radius: 1vmin; */
-        min-height: 0;
-        min-width: 0;
-        max-width: 90%;
-        max-height: 50%;
-        /* width: 100%;
-        height: 100%; */
-        /* height: auto;
-        aspect-ratio: 1; */
-        /* background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat; */
-    }
     /* Menu style */
     li.Teacher, li.Challenges, li.Sandbox {
         display: flex;
@@ -124,17 +109,20 @@
         height: 70%;
     }
     li.Teacher {
-        background-color: color-mix(v-bind('colorPalettes[currentPalette]?.first'), transparent var(--transparency));
+        background-color: color-mix(v-bind('colorPalettes[currentPalette]?.first.bg'), transparent var(--transparency));
+        color: v-bind('colorPalettes[currentPalette]?.first.txt');
     }
     li.Challenges {
         padding: clamp(10px, 10%, 20px) clamp(10px, 10%, 20px);
-        background-color: color-mix(v-bind('colorPalettes[currentPalette]?.second'), transparent var(--transparency));
+        background-color: color-mix(v-bind('colorPalettes[currentPalette]?.second.bg'), transparent var(--transparency));
+        color: v-bind('colorPalettes[currentPalette]?.second.txt');
         width: 40%;
         height: 80%;
         /* font-size:1.3rem; */
     }
     li.Sandbox {
-        background-color: color-mix(v-bind('colorPalettes[currentPalette]?.third'), transparent var(--transparency));
+        background-color: color-mix(v-bind('colorPalettes[currentPalette]?.third.bg'), transparent var(--transparency));
+        color: v-bind('colorPalettes[currentPalette]?.third.txt');
     }
     .router-link {
         transition-duration: 0.2s;
@@ -143,19 +131,38 @@
         justify-content: center;
         align-items: center;
         flex: 1 1 auto;
+        max-width: 100%;
+        max-height: 100%;
     }
     h1 {
         font-size: clamp(1.5rem, 5vw, 2.5rem);
     }
     .router-link:not(:hover):not(:visited) {
-        color:rgb(252, 252, 252);
+        color: var(--almost-black);
     }
     .router-link:visited {
-        color:rgb(102, 252, 252);
+        color: var(--visited-link);
     }
     .router-link:hover {
-        color:rgb(202, 202, 202);
-        background-color: rgb(76, 175, 80);
+        color: var(--almost-black);/* rgb(202, 202, 202); */
+        background-color: orange;/* rgb(76, 175, 80); */
+    }
+
+    .place-holder-images {
+        /* flex: 1 1 auto; */
+        background-color: inherit;
+        /* border-radius: 1vmin; */
+        min-height: 0;
+        min-width: 0;
+        max-width: 90%;
+        max-height: 50%;
+        /* width: 100%;
+        height: 100%; */
+        /* height: auto;
+        aspect-ratio: 1; */
+        /* background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat; */
     }
     
     /* .nav li:hover {

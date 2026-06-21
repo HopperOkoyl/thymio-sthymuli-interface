@@ -1,5 +1,13 @@
 @import './base.css';
 
+:root {
+  /* Changed by TS to almost black and white instead of exact black and white */
+  --almost-black: black;
+  --almost-white: white;
+
+  --visited-link: #3d3846;
+}
+
 #app {
   /*TODO: why is app not taking all the space in body?*/
   /* max-width: 1280px;
@@ -49,8 +57,8 @@
   color: #222222;
 }
 #connection-popup {
-    background-color: #fcfcfc;
-    color: #222222;
+    background-color: var(--almost-white);
+    color: var(--almost-black);
 }
 .no-button {
   border:0;
@@ -71,11 +79,19 @@ p {
   font-size: larger;
 }
 .block {
+  --topbot-large: 15px;
+  --leftright: 20px;
+  --topbot-small: 10px;
+  --margins: var(--topbot-large) var(--leftright);
+  --paddings: var(--topbot-small) var(--leftright);
+  max-height: calc(100% - 2 * (var(--topbot-small) + var(--topbot-large)));
+  max-width: calc(100% - 4 * var(--leftright));
   flex: 1 1 auto;
   display: flex;
-  padding: 10px 20px;
+  justify-content: center;
+  padding: var(--paddings);
   border-radius: 10px;
-  margin: 15px 20px;
+  margin: var(--margins);
 }
 .Teacher {
   background-color: color-mix(in srgb, #FFDFBA, transparent var(--transparency))/* #FFDFBAE6; */

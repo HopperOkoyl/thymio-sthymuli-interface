@@ -26,7 +26,7 @@
 <template>
     <div class="external-container">
         <div class="Teacher block">
-            <h1>Activity Selection Screen (in development), topic id: {{ $route.params.topicId }}</h1>
+            <h1>{{ $route.params.topicId }} Activities</h1>
             <div class="activities">
                 <div v-for="row in rows" :class="row.name+' row'">
                     <ul>
@@ -54,6 +54,7 @@
         height: 100%;
         width: 100%;
         display: flex;
+        justify-content: center;
     }
     .activities {
         flex: 1 1 auto;

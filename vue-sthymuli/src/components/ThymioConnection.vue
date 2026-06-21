@@ -109,7 +109,7 @@ while 1:
 
 
 <template>
-    <div class="popup">
+    <div class="popup-content">
         <h1>Connection to Thymio</h1>
         <div>
             <button @click="debugAction()">Debug button</button>
@@ -130,7 +130,7 @@ while 1:
 </template>
 
 <style scoped>
-    .popup {
+    .popup-content {
         display: flex;
         flex-direction: column;
         height: 100%;

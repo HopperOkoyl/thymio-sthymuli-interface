@@ -16,6 +16,8 @@ import NotFound from './components/NotFound.vue'
 import Settings from './components/Settings.vue'
 import TeacherSettings from './components/TeacherSettings.vue'
 import Licence from './components/Licence.vue'
+import Activities from './components/Activities.vue'
+import Activity from './components/Activity.vue'
 
 declare module 'vue-router' {
     interface RouteMeta {
@@ -50,8 +52,18 @@ const routes = [
         name: 'ProgressPath',
         meta: {title: 'ProgressPath'},
         children: [
-            { path: 'Instructions/:activityID', name: 'Instructions', component: Instructions, meta: {title: 'Instructions'} },
+            { path: 'Instructions/:activityID', name: 'Instructions', component: Instructions, meta: {title: 'Instructions'}}
         ]
+    },
+    { path: '/activities',
+        component: Activities,
+        name: 'Activities',
+        meta: {title: 'Activities'},
+    },
+    { path: '/activities/:activityID',
+        component: Activity,
+        name: 'Activity',
+        meta: {title: 'Activity'},
     },
     { path: '/Licence', name: 'Licence', component: Licence, meta: {title: 'Licence'} },
 ]
