@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
+    "build:gh-pages": "vite build --base=/thymio-sthymuli-interface/",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build"
