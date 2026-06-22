@@ -1,6 +1,9 @@
 <script lang="ts">
     import { COLORS, colorPalettes, type ColorPalette } from '../constants';
     import graduationHat from '../assets/graduation-hat.png';
+    import crown from '../assets/crown.png';
+    import sandbox from '../assets/sandbox.png';
+
     // enum MenuNames {
     //     Home = 'Home',
     //     Teacher = 'Teacher',
@@ -14,8 +17,8 @@
                 MenuNames: [
                     { name: "Home", value: 0 },
                     { name: "Teacher", iconUrl: graduationHat, value: 1 },
-                    { name: "Challenges", iconUrl: "src/assets/online-course.png", value: 2 },
-                    { name: "Sandbox", iconUrl: "src/assets/student-bag.png", value: 3 }
+                    { name: "Challenges", iconUrl: crown, value: 2 },
+                    { name: "Sandbox", iconUrl: sandbox, value: 3 }
                 ],
                 firstColor: 'red',
                 secondColor: 'blue',

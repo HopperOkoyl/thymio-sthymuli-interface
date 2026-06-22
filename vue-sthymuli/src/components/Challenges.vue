@@ -1,5 +1,14 @@
 <script lang="ts">
-  import emptyHouse from '../assets/noun-empty-house-5431675.svg'
+  import emptyHouse from '../assets/noun-empty-house-5431675.svg';
+  import computerScience from '../assets/computer.png';
+  import biology from '../assets/leave.png';
+  import french from '../assets/french.png';
+  import german from '../assets/german.png';
+  import spanish from '../assets/spanish.png';
+  import italian from '../assets/italian.png';
+
+
+
   export default {
     // emits: ['buttonClicked'],
     methods: {
@@ -14,16 +23,16 @@
     data() {
       return {
         firstFloor: [
-          { name: "Computer Science", iconUrl: 'src/assets/computer.png', value: 0 },
-          { name: "Biology", iconUrl: 'src/assets/leave.png', value: 4},
+          { name: "Computer Science", iconUrl: computerScience, value: 0 },
+          { name: "Biology", iconUrl: biology, value: 4},
         ],
         secondFloor: [
-          { name: "French", iconUrl: 'src/assets/french.png', value: 1 },
-          { name: "German", iconUrl: 'src/assets/german.png', value: 2 },
-          { name: "Spanish", iconUrl: 'src/assets/spanish.png', value: 3 },
+          { name: "French", iconUrl: french, value: 1 },
+          { name: "German", iconUrl: german, value: 2 },
+          { name: "Spanish", iconUrl: spanish, value: 3 },
         ],
         thirdFLoor: [
-          { name: "Italian", iconUrl: 'src/assets/italian.png', value: 5},
+          { name: "Italian", iconUrl: italian, value: 5},
         ],
         currentPage: "topic choice",
         emptyHouse,

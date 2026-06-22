@@ -10,6 +10,10 @@
                     {url: "https://www.flaticon.com/free-icons/italy", title: "italy icons", attribText: 'Italy icons created by Freepik - Flaticon'},
                     {url: "https://www.flaticon.com/free-icons/dropdown-arrow", title: "dropdown arrow icons", attribText: 'Dropdown arrow icons created by Catalin Fertu - Flaticon'},
                     {url: "https://www.flaticon.com/free-icons/italian", title: "italian icons", attribText: 'Italian icons created by Freepik - Flaticon'},
+                    {url: "https://www.flaticon.com/free-icons/crown", title: "crown icons", attribText: 'Crown icons created by Freepik - Flaticon'},
+                    {url: "https://www.flaticon.com/free-icons/collaboration", title: "collaboration icons", attribText: 'Collaboration icons created by Freepik - Flaticon'},
+                    {url: "https://www.flaticon.com/free-icons/sandbox", title: "sandbox icons", attribText: 'Sandbox icons created by juicy_fish - Flaticon'},
+                    // {url: "https://www.flaticon.com/free-icons/crown", title: "crown icons", attribText: 'Crown icons created by Freepik - Flaticon'},
                 ],
                 nounprojectIcons: [
                     {attribText: 'setting by SuperNdre from', url: "https://thenounproject.com/icon/setting-4547794/", target: "_blank", title: "setting Icons", licence: '(CC BY 3.0)'},
