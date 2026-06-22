@@ -1,6 +1,7 @@
 <script lang="ts">
 import Challenges from './Challenges.vue';
-
+export default {
+}
 </script>
 
 <template>
