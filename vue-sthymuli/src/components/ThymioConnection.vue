@@ -1,9 +1,9 @@
 <script lang="ts">
-    const USE_THYMIO_CONNECTION: Boolean = true;
-    let Thymio: any;
-    if (USE_THYMIO_CONNECTION) {
-        Thymio = import('../../../../../thymio3-ts-api/dist/thymio.mjs');
-    };
+    const USE_THYMIO_CONNECTION: Boolean = false;
+    // let Thymio: any;
+    // if (USE_THYMIO_CONNECTION) {
+    //     Thymio = import('../../../../../thymio3-ts-api/dist/thymio.mjs');
+    // };
 
     //Thymio original import:
     // import * as Thymio from '../../../../../thymio3-ts-api/dist/thymio.mjs'
@@ -37,7 +37,7 @@
         ],
         data() {
             return {
-                thymio: Thymio,
+                // thymio: Thymio,
                 check,
                 cross,
                 connected: false,
@@ -59,80 +59,83 @@ while 1:
             }
         },
         async mounted() {
-            if (USE_THYMIO_CONNECTION) {
-                const script = document.createElement('script')
-                script.src = '../../../../../../thymio3-ts-api/dist/thymio.global.js'
-                script.onload = () => {
-                    this.thymio = (window as any).thymio
-                }
-                document.head.appendChild(script)
-                document.addEventListener("thymio-connected", (event) => {
-                    const customEvent = event as CustomEvent
-                    this.connected = customEvent.detail as boolean //may be true (connection) or false (disconnection)
-                    console.log(`thymio ${this.connected ? "connected successfully" : "disconnected successfully"}`)
-                    this.$emit('isThymioConnected', this.connected)
-                    this.loading = false //not loading anymore if clicked "connect" and it worked or clicked "disconnect" (and it worked)
-                    console.log(`isConnected property of thymio: ${this.thymio.isConnected()}`)
-                    // TODO: Error to catch from browser: thymio.ts:67 Uncaught (in promise) NotFoundError: User cancelled the requestDevice() chooser.
-                    // TODO: Error to catch from browser: Uncaught (in promise) Error: Web Bluetooth not supported
-                        //TODO: if browser is firefox: suggest to use chrome/safari/... if also OS is linux based => suggest to use Chrome with the correct experimental setting set
-                })
-            }
+            // if (USE_THYMIO_CONNECTION) {
+            //     const script = document.createElement('script')
+            //     script.src = '../../../../../../thymio3-ts-api/dist/thymio.global.js'
+            //     script.onload = () => {
+            //         this.thymio = (window as any).thymio
+            //     }
+            //     document.head.appendChild(script)
+            //     document.addEventListener("thymio-connected", (event) => {
+            //         const customEvent = event as CustomEvent
+            //         this.connected = customEvent.detail as boolean //may be true (connection) or false (disconnection)
+            //         console.log(`thymio ${this.connected ? "connected successfully" : "disconnected successfully"}`)
+            //         this.$emit('isThymioConnected', this.connected)
+            //         this.loading = false //not loading anymore if clicked "connect" and it worked or clicked "disconnect" (and it worked)
+            //         console.log(`isConnected property of thymio: ${this.thymio.isConnected()}`)
+            //         // TODO: Error to catch from browser: thymio.ts:67 Uncaught (in promise) NotFoundError: User cancelled the requestDevice() chooser.
+            //         // TODO: Error to catch from browser: Uncaught (in promise) Error: Web Bluetooth not supported
+            //             //TODO: if browser is firefox: suggest to use chrome/safari/... if also OS is linux based => suggest to use Chrome with the correct experimental setting set
+            //     })
+            // }
+            // else {
+            //         console.log("Change global variable \"USE_THYMIO_CONNECTION\" in file ThymioConnection.vue to true to use Thymio.")
+            // }
         },
         methods: {
             connect() {
-                if (USE_THYMIO_CONNECTION) {
-                    if (this.thymio) {
-                        this.loading = true;
-                        this.thymio.requestAndConnect();
-                        console.log("Connection request sent");
-                    }
-                }
-                else {
-                    console.log("Change global variable \"USE_THYMIO_CONNECTION\" in file ThymioConnection.vue to true to use Thymio.")
-                }
+                // if (USE_THYMIO_CONNECTION) {
+                //     if (this.thymio) {
+                //         this.loading = true;
+                //         this.thymio.requestAndConnect();
+                //         console.log("Connection request sent");
+                //     }
+                // }
+                // else {
+                //     console.log("Change global variable \"USE_THYMIO_CONNECTION\" in file ThymioConnection.vue to true to use Thymio.")
+                // }
             },
             disconnect() {
-                if (USE_THYMIO_CONNECTION) {
-                    if (this.thymio) {
-                        this.loading = false;
-                        this.connected = false;
-                        this.thymio.disconnect();
-                        console.log("Disconnection request sent");
-                    }
-                }
-                else {
-                    console.log("Change global variable \"USE_THYMIO_CONNECTION\" in file ThymioConnection.vue to true to use Thymio.")
-                }
+                // if (USE_THYMIO_CONNECTION) {
+                //     if (this.thymio) {
+                //         this.loading = false;
+                //         this.connected = false;
+                //         this.thymio.disconnect();
+                //         console.log("Disconnection request sent");
+                //     }
+                // }
+                // else {
+                //     console.log("Change global variable \"USE_THYMIO_CONNECTION\" in file ThymioConnection.vue to true to use Thymio.")
+                // }
             },
             async executeClick() {
-                if (USE_THYMIO_CONNECTION) {
-                    await this.thymio.sendPythonScript(this.code);
-                    await this.thymio.executeLoadedScript();
-                    console.log("Execution request sent.");
-                } else {
-                    console.log("Change global variable \"USE_THYMIO_CONNECTION\" in file ThymioConnection.vue to true to use Thymio.")
-                }
+                // if (USE_THYMIO_CONNECTION) {
+                //     await this.thymio.sendPythonScript(this.code);
+                //     await this.thymio.executeLoadedScript();
+                //     console.log("Execution request sent.");
+                // } else {
+                //     console.log("Change global variable \"USE_THYMIO_CONNECTION\" in file ThymioConnection.vue to true to use Thymio.")
+                // }
             },
             async stopClick() {
-                if (USE_THYMIO_CONNECTION) {
-                    await this.thymio.stopScriptExecution();
-                    console.log("Stop execution request sent.");
-                } else {
-                    console.log("Change global variable \"USE_THYMIO_CONNECTION\" in file ThymioConnection.vue to true to use Thymio.")
-                }
+                // if (USE_THYMIO_CONNECTION) {
+                //     await this.thymio.stopScriptExecution();
+                //     console.log("Stop execution request sent.");
+                // } else {
+                //     console.log("Change global variable \"USE_THYMIO_CONNECTION\" in file ThymioConnection.vue to true to use Thymio.")
+                // }
             },
             async debugAction() {
-                if (USE_THYMIO_CONNECTION) {
-                    console.log("test");
+                // if (USE_THYMIO_CONNECTION) {
+                //     console.log("test");
 
-                    // console.log("request firmwareinfo sent");
-                    // console.log(await this.thymio.getFirmwareInfo());
+                //     // console.log("request firmwareinfo sent");
+                //     // console.log(await this.thymio.getFirmwareInfo());
                     
-                    await this.thymio.updateFirmware();
-                } else {
-                    console.log("Change global variable \"USE_THYMIO_CONNECTION\" in file ThymioConnection.vue to true to use Thymio.")
-                }
+                //     await this.thymio.updateFirmware();
+                // } else {
+                //     console.log("Change global variable \"USE_THYMIO_CONNECTION\" in file ThymioConnection.vue to true to use Thymio.")
+                // }
             }
         }
     })
