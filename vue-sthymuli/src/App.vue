@@ -1,8 +1,5 @@
 <script lang="ts">
-import { createRouter } from 'vue-router'
-/* import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue' */
-  // import MainMenuButton from './components/Button.vue';
+  import { createRouter } from 'vue-router'
   import InterfaceActivity from './components/3dInterfaceActivity.vue';
   import Teacher from './components/Teacher.vue';
   import Challenges from './components/Challenges.vue';
@@ -18,12 +15,6 @@ import TheWelcome from './components/TheWelcome.vue' */
   import flagIT from './assets/FlagIT.png';
   import flagEN from './assets/FlagEN.png';
   import dropDownArrow from './assets/drop-down-arrow.png';
-  // enum MenuNames {
-  //   Home = 'Home',
-  //   Teacher = 'Teacher',
-  //   Challenges = 'Challenges',
-  //   Sandbox = 'Sandbox',
-  // }
 
   export default {
     components: {
