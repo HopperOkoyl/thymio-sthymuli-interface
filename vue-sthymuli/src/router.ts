@@ -1,5 +1,5 @@
 // import { createMemoryHistory, createRouter } from 'vue-router' //SSR and non-browser environment
-import { createWebHistory, createRouter } from 'vue-router' //Use for normal browser app
+import { createWebHistory, createWebHashHistory, createRouter } from 'vue-router' //Use for normal browser app
 //or createWebHashHistory() see History modes https://router.vuejs.org/guide/essentials/history-mode.html
 import type { RouteRecordRaw } from 'vue-router'
 
@@ -74,6 +74,7 @@ const routes = [
 // })
 
 export const router = createRouter({ //Use for normal browser app
-    history: createWebHistory(),
+    // history: createWebHistory(),
+    history: createWebHashHistory(),
     routes,
 })
