@@ -15,6 +15,7 @@
   import flagIT from './assets/FlagIT.png';
   import flagEN from './assets/FlagEN.png';
   import dropDownArrow from './assets/drop-down-arrow.png';
+  import home from './assets/noun-house-6718391.svg';
 
   export default {
     components: {
@@ -39,6 +40,7 @@
         flagEN,
         flagIT,
         dropDownArrow,
+        home,
       }
     },
     //TODO: Adding router for navigation
@@ -64,6 +66,9 @@
       <div class="top-bar-section empty"></div>
       <div class="top-bar-section right-section">
         <div id="top-bar-right">
+          <div id="home" class="top-bar-elem">
+            <button class="no-button"><RouterLink :to="{name: 'Home'}"><img class="icon-image" :src="home" alt="Home"></RouterLink></button>
+          </div>
           <div id="language" class="top-bar-elem">
             <button class="back no-button"><img class="icon-image smaller" :src="dropDownArrow" alt="Drop down arrow"></img><img class="icon-image" :src="flagEN" alt="Flag"></img></button>
           </div>
