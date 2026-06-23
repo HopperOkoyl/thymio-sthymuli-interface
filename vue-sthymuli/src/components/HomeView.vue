@@ -4,12 +4,6 @@
     import crown from '../assets/crown.png';
     import sandbox from '../assets/sandbox.png';
 
-    // enum MenuNames {
-    //     Home = 'Home',
-    //     Teacher = 'Teacher',
-    //     Challenges = 'Challenges',
-    //     Sandbox = 'Sandbox',
-    // }
     export default{
         data() {
             return {
@@ -25,14 +19,6 @@
                 thirdColor: 'green',
                 currentPalette: 1, // 1 = Pastel Palette
                 colorPalettes,
-                // colorPalette: [
-                //     {name: "sapphire", first: COLOR.HexCodeSapphire, second: COLOR.HexCodeSandyBrown, third: COLOR.HexCodeSageGreen, bonus1: COLOR.HexCodeAshGrey},
-                //     {name: "dark-pastel", first: COLOR.HexCodeSapphire, second: COLOR.HexCodeSandyBrown, third: COLOR.HexCodeJungleGreen, bonus1: COLOR.HexCodeLavenderGrey,},
-                //     {name: "contrast", first: COLOR.HexCodeSapphire, second: COLOR.HexCodeMintLeaf, third: COLOR.HexCodeDustyMauve},
-                //     {name: "bright-contrast", first: COLOR.HexCodeSapphire, second: COLOR.HexCodeAmberGlow, third: COLOR.HexCodeBrightFern}
-
-                // ]
-                // currentPalette: firstPalette,
             }
         },
         methods: {

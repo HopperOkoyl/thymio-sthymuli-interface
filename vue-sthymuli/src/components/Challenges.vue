@@ -108,7 +108,7 @@
     aspect-ratio: 0.82;
     display: flex;
     flex-direction: column-reverse;
-    justify-content: bottom;
+    justify-content: flex-start;
   }
   .floor {
     display: flex;

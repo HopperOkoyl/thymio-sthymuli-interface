@@ -186,7 +186,7 @@ main {
 /* Top bar */
 
 #top-bar {
-  --proportion: var(var(--top-bar-proportion));
+  --proportion: var(--top-bar-proportion);
   background-color: rgba(255, 255, 255, 0.9);
   display: flex;
   flex: var(--proportion) var(--proportion) auto;
