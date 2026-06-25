@@ -77,7 +77,7 @@ import Instructions from './Instructions.vue';
         <div class="content">
             <div class="wrapper">
                 <div class="image-fullscreen path"  :id="($route.params.roomID)?.toString().trim() + '-room'">
-                    <RouterLink :to="{name: 'Instructions', params: {activityID: 'pres'}}" class="activity-point">
+                    <RouterLink aria-label="Activity pres" :to="{name: 'Instructions', params: {activityID: 'pres'}}" class="activity-point">
                     </RouterLink>
                     <!-- <div @click="openActivity('pres')" class="activity-point">
                     </div> -->
