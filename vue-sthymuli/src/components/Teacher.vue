@@ -42,8 +42,9 @@
     height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    /* justify-content: space-evenly; */
+    /* flex-direction: column; */
+    justify-content: center;
+    /* align-items: center; */
   }
   .container {
     pointer-events: auto;
@@ -70,6 +71,7 @@
     text-decoration: none;
     font-weight: bold;
     color: inherit;
+    text-align: center;
   }
   a.allTopics:visited {
     color: inherit;

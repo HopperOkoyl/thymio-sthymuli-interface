@@ -199,7 +199,7 @@ main {
 /* Top bar */
 
 #top-bar {
-  --min-width: 645px;
+  --min-width: 690px;
   --proportion: var(--top-bar-proportion);
 
   background-color: rgba(255, 255, 255, 0.9);
@@ -247,16 +247,8 @@ main {
   max-height: 100%;
 }
 
-#back-button {
-  /* border: black;
-  border-radius: 50%;
-  border-style: solid;
-  border-width:medium; */
-  max-height:40px;
-  aspect-ratio: 1;
-  margin: 1%;
-  padding: 4%;
-}
+/* #back-button {
+} */
 
 /* #language, #settings {
   display: flex;
@@ -298,7 +290,7 @@ main {
 }
 
 
-@media (max-width: 645px) {
+@media (max-width: 690px) {
   #top-bar-right .top-bar-elem:not(.small-screen), .top-bar-section.empty {
     display: none;
   }
@@ -316,7 +308,7 @@ main {
     flex: 1 1 auto;
   }
 }
-@media (min-width: 645px) {
+@media (min-width: 690px) {
   .small-screen {
     display: none;
   }
