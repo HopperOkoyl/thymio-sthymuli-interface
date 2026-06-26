@@ -125,6 +125,8 @@
         color: v-bind('colorPalettes[currentPalette]?.third.txt');
     }
     .router-link {
+        border-radius: 7vmin;
+
         --min: 10px;
         --val: 1vw;
         --max: 20px;
