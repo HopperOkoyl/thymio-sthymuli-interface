@@ -21,6 +21,18 @@
                     {attribText: 'House by Suryaman from', url: "https://thenounproject.com/icon/house-5431675/", target: "_blank", title:"House Icons", licence: '(CC BY 3.0)'},
                     {attribText: 'play by Numero Uno from', url: "https://thenounproject.com/browse/icons/term/play/", target: "_blank", title: "play Icons", licence: '(CC BY 3.0)'},
                     {attribText: 'more by Funky from', url: "https://thenounproject.com/browse/icons/term/more/", target: "_blank", title: "more Icons", licence: '(CC BY 3.0)'},
+                ],
+                pexels: [
+                    {name: 'Abstract colorful paint', author: 'Steve'},
+                    {name: 'Building blocks', author: 'Julia Bataeva'},
+                    {name: 'Drawing white on black, school math', author: 'Chenspec'},
+                    {name: 'Imperfect drawing plants', author: 'Anhl202'},
+                    {name: 'Repeated grey and orange pattern', author: 'jimette'},
+                    {name: 'Repeated black and white flower pattern', author: 'jimette'},
+                    {name: 'Mandala flower', author: 'Mandala world'},
+                    {name: 'Puzzle', author: 'Alexas Fotos'},
+
+
                 ]
             }
         }
@@ -47,7 +59,12 @@
                             </ul>
                         </p>
                 <h3>Background images</h3>
-                    <p></p>
+                    <h4>Pexels</h4>
+                    <p>
+                        <ul>
+                            <li v-for="bg in pexels"> {{ bg.name }} by {{ bg.author }} <a href="https://www.pexels.com/license/">(Free from Pexels)</a></li>
+                        </ul>
+                    </p>
                 <h3>Other</h3>
                     <p>...</p>
     </div>
