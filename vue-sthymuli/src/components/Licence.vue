@@ -20,6 +20,7 @@
                     {attribText: 'House by Ashok from', url: "https://thenounproject.com/icon/house-6718391/", target: "_blank", title: "House Icons", licence: '(CC BY 3.0)'},
                     {attribText: 'House by Suryaman from', url: "https://thenounproject.com/icon/house-5431675/", target: "_blank", title:"House Icons", licence: '(CC BY 3.0)'},
                     {attribText: 'play by Numero Uno from', url: "https://thenounproject.com/browse/icons/term/play/", target: "_blank", title: "play Icons", licence: '(CC BY 3.0)'},
+                    {attribText: 'more by Funky from', url: "https://thenounproject.com/browse/icons/term/more/", target: "_blank", title: "more Icons", licence: '(CC BY 3.0)'},
                 ]
             }
         }

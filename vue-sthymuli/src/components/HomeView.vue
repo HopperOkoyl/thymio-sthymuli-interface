@@ -50,9 +50,12 @@
         <ul class="nav-menu">
             <li v-for="menu in secondaryMenus" :key="menu.name" :class="menu.name">
                 <RouterLink :to=menu.name.toLowerCase() class="router-link">
-                    <h1>{{ menu.name }}</h1>
-                    <img class="place-holder-images image" :src="menu.iconUrl" alt=""/>
-                    <!-- <div class="place-holder-images image" :class="menu.name"></div> -->
+                    <div class="h1-wrapper">
+                        <h1>{{ menu.name }}</h1>
+                    </div>
+                    <div class="wrapper">
+                        <img class="place-holder-images image" :src="menu.iconUrl" alt=""/>
+                    </div>
                 </RouterLink>
             </li>
         </ul>
@@ -61,6 +64,15 @@
 
 
 <style scoped>
+    nav {
+        height: 100%;
+        width: 100%;
+        max-height: 100%;
+        max-width: 100%;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+    }
     .nav-menu {
         list-style: none;
         list-style-type: none;
@@ -68,21 +80,15 @@
         margin: 0;
         text-align: center;
 
-
-        /* height: 100%;
-        width: 100%; */
+        height: 100%;
+        width: 100%;
+        max-height: 100%;
+        max-width: 100%;
         display: flex;
         flex: 1 1 auto;
         justify-content: space-evenly;
         align-items: center;
         /* background-color: aqua; */
-    }
-    nav {
-        /* height: 100%;
-        width: 100%; */
-        display: flex;
-        flex: 1 1 auto;
-        flex-direction: column;
     }
 
     /* Menu style */
@@ -91,23 +97,27 @@
         flex-direction: column;
         border-radius: 7vmin;
         justify-content: space-evenly;
+        max-height: 100%;
         /* flex: 1 1 auto; */ /*not compatible with space-evenly etc*/
     }
     li.Teacher, li.Sandbox {
         /* font-size:1rem; */
         width: 20%;
-        height: 70%;
+        max-width: 20%;
+        height: 60%;
+        max-height: 60%;
     }
     li.Teacher {
         background-color: color-mix(v-bind('colorPalettes[currentPalette]?.first.bg'), transparent var(--transparency));
         color: v-bind('colorPalettes[currentPalette]?.first.txt');
     }
     li.Challenges {
-        padding: clamp(10px, 10%, 20px) clamp(10px, 10%, 20px);
         background-color: color-mix(v-bind('colorPalettes[currentPalette]?.second.bg'), transparent var(--transparency));
         color: v-bind('colorPalettes[currentPalette]?.second.txt');
         width: 40%;
+        max-width: 40%;
         height: 80%;
+        max-height: 80%;
         /* font-size:1.3rem; */
     }
     li.Sandbox {
@@ -115,17 +125,37 @@
         color: v-bind('colorPalettes[currentPalette]?.third.txt');
     }
     .router-link {
+        --min: 10px;
+        --val: 1vw;
+        --max: 20px;
+        --padding: clamp(var(--min), var(--val), var(--max));
+
+        padding: var(--padding) var(--padding);
+
         transition-duration: 0.2s;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         flex: 1 1 auto;
+        max-width: calc(100% - 2 * var(--padding));
+        max-height: calc(100% - 2 * var(--padding));
+    }
+    .h1-wrapper {
+        height: 30%;
+        max-height: 30%;
+        width: 100%;
         max-width: 100%;
-        max-height: 100%;
+        align-content: end;
     }
     h1 {
-        font-size: clamp(1.5rem, 5vw, 2.5rem);
+        --h1-font-size: clamp(1rem, 3vw, 7.5rem);
+        --margin: calc(var(--h1-font-size) / 4);
+        margin: var(--margin) 0;
+        font-size: var(--h1-font-size);
+        align-content: end;
+        max-height: calc(100% - 2 * var(--margin));
+        max-width: 100%;
     }
     .router-link:not(:hover):not(:visited) {
         color: var(--almost-black);
@@ -137,22 +167,24 @@
         color: var(--almost-black);/* rgb(202, 202, 202); */
         background-color: orange;/* rgb(76, 175, 80); */
     }
+    .wrapper {
+        max-width: 100%;
+        max-height: 70%;
+        flex: 1 1 auto;
+        display: flex;
+        aspect-ratio: 1;
+        justify-content: center;
+        align-items: center;
+    }
 
     .place-holder-images {
-        /* flex: 1 1 auto; */
+        flex: 1 1 auto;
         background-color: inherit;
-        /* border-radius: 1vmin; */
         min-height: 0;
         min-width: 0;
-        max-width: 90%;
-        max-height: 50%;
-        /* width: 100%;
-        height: 100%; */
-        /* height: auto;
-        aspect-ratio: 1; */
-        /* background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat; */
+        max-width: 100%;
+        max-height: 100%;
+        aspect-ratio: 1;
     }
     
     /* .nav li:hover {

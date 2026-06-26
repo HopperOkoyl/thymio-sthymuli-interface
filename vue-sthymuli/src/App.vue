@@ -16,6 +16,7 @@
   import flagEN from './assets/FlagEN.png';
   import dropDownArrow from './assets/drop-down-arrow.png';
   import home from './assets/noun-house-6718391.svg';
+  import more from './assets/noun-more-897914.svg';
 
   export default {
     components: {
@@ -41,6 +42,7 @@
         flagIT,
         dropDownArrow,
         home,
+        more,
       }
     },
     //TODO: Adding router for navigation
@@ -60,20 +62,30 @@
   <div class="screen">
     <div id="top-bar">
       <div class="top-bar-section left-secion">
-        <ConnectionStatus class="top-bar-elem" @toggleConnectionWindow="toggleConnectionWindow()" :connectionStatus="isConnected"></ConnectionStatus>
-        <button class="no-button top-bar-elem" id="back-button" v-if="$route.name !== 'Home'" @click="$router.back()">Back</button>
+        <div id="top-bar-left">
+          <div class="top-bar-elem">
+            <ConnectionStatus @toggleConnectionWindow="toggleConnectionWindow()" :connectionStatus="isConnected"></ConnectionStatus>
+          </div>
+          <div class="top-bar-elem">
+            <button class="no-button top-bar-elem" id="back-button" v-if="$route.name !== 'Home'" @click="$router.back()"><p>Back</p></button>
+          </div>
+        </div>
       </div>
       <div class="top-bar-section empty"></div>
       <div class="top-bar-section right-section">
         <div id="top-bar-right">
           <div id="home" class="top-bar-elem">
-            <button class="no-button"><RouterLink :to="{name: 'Home'}"><img class="icon-image" :src="home" alt="Home"></RouterLink></button>
+            <button class="no-button"><RouterLink class="top-bar-router-link" :to="{name: 'Home'}"><img class="icon-image" :src="home" alt="Home"></RouterLink></button>
           </div>
           <div id="language" class="top-bar-elem">
             <button class="back no-button"><img class="icon-image smaller" :src="dropDownArrow" alt="Drop down arrow"></img><img class="icon-image" :src="flagEN" alt="Flag"></img></button>
           </div>
           <div id="settings" class="top-bar-elem">
             <button class="no-button"><img class="icon-image larger" :src="settingsIconSimple" alt="Gear"></img><p>Settings</p></button>
+          </div>
+
+          <div class="small-screen top-bar-elem">
+            <button class="no-button"><img class="icon-image" :src="more" alt="More"></img></button>
           </div>
         </div>
       </div>
@@ -130,13 +142,14 @@
   flex: 1 1 auto;
   height: 100%;
 
-  --top-bar-proportion: 1;
-  --main-proportion: calc(10 - var(--top-bar-proportion));
+  --top-bar-proportion: 7;
+  --main-proportion: calc(100 - var(--top-bar-proportion));
 }
 main {
   --proportion: var(--main-proportion);
   flex: var(--proportion) var(--proportion) auto;
-  max-height: calc(10% * var(--proportion));
+  max-height: calc(1% * var(--proportion));
+  height: calc(1% * var(--proportion));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -186,11 +199,15 @@ main {
 /* Top bar */
 
 #top-bar {
+  --min-width: 645px;
   --proportion: var(--top-bar-proportion);
+
   background-color: rgba(255, 255, 255, 0.9);
   display: flex;
   flex: var(--proportion) var(--proportion) auto;
-  /* min-width: 5%; */
+  min-height: 54.5px;
+  max-height: calc(1% * var(--proportion));
+  min-width: var(--min-width);
 }
 .top-bar-section {
   display: flex;
@@ -206,17 +223,30 @@ main {
   flex: 1 1 auto;
   justify-content: right;
 }
+#top-bar-left {
+  display:flex;
+  flex: 1 1 auto;
+  justify-content: left;
+}
 .top-bar-section.left-secion {
   min-width: 25%;
-  justify-content: left;
-  align-items: center;
+  /* justify-content: left;
+  align-items: center; */
 }
 .top-bar-elem {
   display: flex;
   /* flex: 1 1 auto; */
+  height: 100%;
+  max-height: 100%;
   justify-content: center;
   align-items: center;
 }
+.top-bar-elem button {
+  flex: 1 1 auto;
+  height: 100%;
+  max-height: 100%;
+}
+
 #back-button {
   /* border: black;
   border-radius: 50%;
@@ -234,6 +264,31 @@ main {
   justify-content: center;
 } */
 
+.top-bar-router-link {
+  display: flex;
+  flex: 1 1 auto;
+  height: 100%;
+  max-height: 100%;
+  align-items: center;
+}
+
+.top-bar-elem p {
+  /* flex: 1 1 auto; */
+  --margin: 10px;
+  --p-font-size: clamp(1.2rem, 1.3vw, 7.5rem);
+  font-size: var(--p-font-size);
+  margin: var(--margin) 0;
+  max-height: calc(100% - 2 * var(--margin));
+  height: calc(100% - 2 * var(--margin));
+  align-content: center;
+
+}
+
+.icon-image {
+  flex: 1 1 auto;
+  height: 100%;
+  max-height: 100%;
+}
 
 /* .icon-image.larger {
   height: 2em;
@@ -241,6 +296,33 @@ main {
 .icon-image.smaller {
   height: 1.5em;
 }
+
+
+@media (max-width: 645px) {
+  #top-bar-right .top-bar-elem:not(.small-screen), .top-bar-section.empty {
+    display: none;
+  }
+  .top-bar-section.right-section {
+    min-width: 10%;
+    width: 10%;
+    flex: 1 1 auto;
+  }
+  #top-bar {
+    justify-content: space-between;
+    min-width: 0;
+  }
+  .top-bar-section.left-secion {
+    min-width: 20%;
+    flex: 1 1 auto;
+  }
+}
+@media (min-width: 645px) {
+  .small-screen {
+    display: none;
+  }
+}
+
+
 
 </style>
 
@@ -256,5 +338,6 @@ main {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-}
+}  
+
 </style>

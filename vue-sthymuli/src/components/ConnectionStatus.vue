@@ -41,4 +41,8 @@
         width: auto;
         vertical-align: middle;
     } */
+
+    p {
+        white-space: nowrap;
+    }
 </style>
