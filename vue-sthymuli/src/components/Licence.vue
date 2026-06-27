@@ -14,6 +14,7 @@
                     {url: "https://www.flaticon.com/free-icons/collaboration", title: "collaboration icons", attribText: 'Collaboration icons created by Freepik - Flaticon'},
                     {url: "https://www.flaticon.com/free-icons/sandbox", title: "sandbox icons", attribText: 'Sandbox icons created by juicy_fish - Flaticon'},
                     // {url: "https://www.flaticon.com/free-icons/crown", title: "crown icons", attribText: 'Crown icons created by Freepik - Flaticon'},
+                    // <a href="https://www.flaticon.com/free-icons/sparkle" title="sparkle icons">Sparkle icons created by Muhammad_Usman - Flaticon</a>
                 ],
                 nounprojectIcons: [
                     {attribText: 'setting by SuperNdre from', url: "https://thenounproject.com/icon/setting-4547794/", target: "_blank", title: "setting Icons", licence: '(CC BY 3.0)'},
@@ -21,6 +22,10 @@
                     {attribText: 'House by Suryaman from', url: "https://thenounproject.com/icon/house-5431675/", target: "_blank", title:"House Icons", licence: '(CC BY 3.0)'},
                     {attribText: 'play by Numero Uno from', url: "https://thenounproject.com/browse/icons/term/play/", target: "_blank", title: "play Icons", licence: '(CC BY 3.0)'},
                     {attribText: 'more by Funky from', url: "https://thenounproject.com/browse/icons/term/more/", target: "_blank", title: "more Icons", licence: '(CC BY 3.0)'},
+                    {attribText: 'led light by gravisio from', url: "https://thenounproject.com/browse/icons/term/led-light/", target: "_blank", title: "led light Icons", licence: '(CC BY 3.0)'},
+                    // 5x tap by Saeful Muslim from <a href="https://thenounproject.com/browse/icons/term/5x-tap/" target="_blank" title="5x tap Icons">Noun Project</a> (CC BY 3.0)
+                    // tap by ridhobadal from <a href="https://thenounproject.com/browse/icons/term/tap/" target="_blank" title="tap Icons">Noun Project</a> (CC BY 3.0)
+                    // change by Tithy from <a href="https://thenounproject.com/browse/icons/term/change/" target="_blank" title="change Icons">Noun Project</a> (CC BY 3.0)
                 ],
                 pexels: [
                     {name: 'Abstract colorful paint', author: 'Steve'},

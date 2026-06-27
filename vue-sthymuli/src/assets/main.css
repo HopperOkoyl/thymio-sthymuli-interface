@@ -93,9 +93,9 @@ p {
 .Teacher {
   background-color: color-mix(in srgb, #FFDFBA, transparent var(--transparency))/* #FFDFBAE6; */
 }
-.Teacher .a {
+/* .Teacher .a {
 
-}
+} */
 .Teacher.block {
   flex: 1 1 auto;
   display: flex;
