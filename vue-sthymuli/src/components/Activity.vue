@@ -5,7 +5,6 @@ import easyActivity from '../assets/Easy.svg';
 import mediumActivity from '../assets/and.svg';
 import medium3InOrActivity from '../assets/OR 3in.svg';
 import mediumRGBActivity from '../assets/RGB leds.svg';
-import { loadEnv } from 'vite';
 
 export default {
     data() {
